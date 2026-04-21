@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SysInt Inc | Enterprise Integration Services</title>
+  <meta name="description" content="SysInt Inc — Enterprise Integration, Azure Integration Services, BizTalk migration, and middleware modernization." />
+  <link rel="icon" type="image/png" href="logos/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060814;
+      --bg2: #0a1020;
+      --panel: rgba(255,255,255,0.055);
+      --panel2: rgba(255,255,255,0.028);
+      --text: #eef3ff;
+      --muted: #aeb8d0;
+      --line: rgba(255,255,255,0.10);
+      --cyan: #18c8ff;
+      --blue: #1f7cff;
+      --violet: #8d1cff;
+      --magenta: #ff2b8c;
+      --orange: #ff7a00;
+      --amber: #ffb400;
+      --shadow: 0 20px 60px rgba(0,0,0,0.40);
+      --radius: 22px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 10% 8%, rgba(24,200,255,0.13), transparent 30%),
+        radial-gradient(ellipse at 88% 15%, rgba(141,28,255,0.15), transparent 32%),
+        radial-gradient(ellipse at 85% 92%, rgba(255,122,0,0.11), transparent 28%),
+        radial-gradient(ellipse at 12% 90%, rgba(31,124,255,0.09), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px) saturate(160%);
+      background: rgba(6,8,20,0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 20px;
+    }
+
+    .brand img.logo-side {
+      height: 78px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-page-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-page-links a {
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .nav-page-links a:hover,
+    .nav-page-links a.active {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .nav-cta {
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 22px rgba(141,28,255,0.28);
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero { padding: 72px 0 48px; }
+
+    h1 {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan) 0%, #5a7dff 40%, var(--violet) 70%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .lead {
+      font-size: 0.97rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.72;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 6px 22px rgba(141,28,255,0.28);
+    }
+
+    .btn-primary:hover { box-shadow: 0 10px 32px rgba(141,28,255,0.40); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.22);
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn-outline:hover { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.06); }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 56px 0; scroll-margin-top: 106px; }
+
+    .section-title {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.97rem;
+      margin-bottom: 36px;
+      line-height: 1.72;
+    }
+
+    /* ── PANELS / CARDS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      padding: 32px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+    }
+
+    .panel-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .panel h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .panel p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.72;
+      margin-bottom: 16px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: #c8d4ee;
+    }
+
+    .feature-list li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    /* ── AZURE GRID ── */
+    .azure-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .azure-card {
+      padding: 26px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .azure-card:hover { transform: translateY(-2px); box-shadow: 0 28px 70px rgba(0,0,0,0.50); }
+
+    .azure-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+    }
+
+    .azure-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+
+    .azure-card h4 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .azure-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── MIGRATION STEPS ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .step {
+      padding: 26px 22px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .step-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: rgba(24,200,255,0.18);
+      margin-bottom: 10px;
+    }
+
+    .step h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      margin-top: 28px;
+      padding: 36px;
+      border-radius: 24px;
+      background: linear-gradient(90deg, rgba(24,200,255,0.08), rgba(141,28,255,0.10), rgba(255,122,0,0.08));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .callout strong {
+      font-size: 1.15rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .callout p {
+      color: #d0d9f0;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .contact-box p { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; line-height: 1.7; }
+
+    .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: var(--line); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 0 56px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand img.logo-text {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.65;
+    }
+
+    .footer-brand:hover img { opacity: 1; }
+
+    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-nav a { color: var(--muted); font-size: 0.9rem; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { color: var(--muted); font-size: 0.85rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .two-col, .azure-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 680px) {
+      .two-col, .azure-grid, .steps-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="logos/sidelogo-text.png" alt="SysInt Inc" class="logo-side" />
+      </a>
+      <nav class="nav-links">
+        <a href="#azure">Azure Integration</a>
+        <a href="#biztalk">BizTalk Migration</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Speak to an Expert</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1>Connect, integrate, and modernize <span class="gradient-text">your enterprise systems.</span></h1>
+        <p class="lead">
+          With over 20 years of enterprise integration experience, SysInt Inc helps organizations build reliable
+          integration foundations — connecting ERP, CRM, legacy systems, SaaS, APIs, and cloud services through
+          modern middleware and Azure Integration Services.
+        </p>
+        <p class="lead">
+          We design integration architectures that are observable, maintainable, and built to last — from initial
+          assessment through delivery, migration, and ongoing modernization.
+        </p>
+        <div class="hero-actions">
+          <a href="#azure" class="btn btn-primary">Azure Integration Services</a>
+          <a href="#biztalk" class="btn btn-outline">BizTalk Migration</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CORE CAPABILITIES -->
+    <section id="capabilities">
+      <div class="container">
+        <h2 class="section-title">Enterprise integration across <span class="gradient-text">every layer of your business.</span></h2>
+        <p class="section-sub">
+          We connect operational platforms across finance, supply chain, customer engagement, partner ecosystems,
+          and legacy environments to create a reliable digital backbone for the business.
+        </p>
+
+        <div class="two-col">
+          <div class="panel">
+            <div class="panel-icon">🔗</div>
+            <h3>Enterprise Integration Architecture</h3>
+            <p>
+              SysInt Inc helps organizations integrate business-critical systems through APIs, workflows, messaging,
+              event-driven patterns, and middleware architecture. We design for reliability, observability, and
+              long-term maintainability.
+            </p>
+            <ul class="feature-list">
+              <li>API design, management, and gateway strategy</li>
+              <li>Event-driven and message-based integration patterns</li>
+              <li>Service orchestration and choreography</li>
+              <li>B2B and EDI partner integration</li>
+              <li>Integration governance and monitoring frameworks</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-icon">☁️</div>
+            <h3>Cloud-Native Integration Design</h3>
+            <p>
+              Modern integration built for cloud scale — using serverless, event-driven, and microservices
+              patterns to create integration layers that are elastic, observable, and cost-efficient
+              without sacrificing reliability.
+            </p>
+            <ul class="feature-list">
+              <li>Serverless integration using Azure Logic Apps and Functions</li>
+              <li>Real-time and batch processing architecture</li>
+              <li>Multi-cloud and hybrid connectivity</li>
+              <li>SaaS platform connectivity — Dynamics, Salesforce, SAP</li>
+              <li>Integration security, auth, and compliance controls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- AZURE INTEGRATION SERVICES -->
+    <section id="azure">
+      <div class="container">
+        <h2 class="section-title">Deep expertise across the <span class="gradient-text">Azure integration platform.</span></h2>
+        <p class="section-sub">
+          Connecting ERP, CRM, SCM, legacy systems, SaaS applications, APIs, messaging platforms, and cloud services
+          through robust Azure-native middleware and modern integration layers.
+        </p>
+
+        <div class="azure-grid">
+          <div class="azure-card">
+            <div class="azure-tag">Logic Apps</div>
+            <h4>Azure Logic Apps</h4>
+            <p>Low-code workflow orchestration connecting hundreds of services. We design scalable, maintainable Logic App solutions for both Standard and Consumption tiers.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">Service Bus</div>
+            <h4>Azure Service Bus</h4>
+            <p>Reliable enterprise messaging and decoupling. We architect queue and topic-based patterns for guaranteed delivery, ordering, and dead-letter handling.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">API Management</div>
+            <h4>Azure API Management</h4>
+            <p>API gateway, security, throttling, versioning, and developer portal. We build API estates that are secure, discoverable, and monetizable.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">Event Grid</div>
+            <h4>Azure Event Grid</h4>
+            <p>Event-driven architecture at cloud scale. We design reactive integration topologies with Event Grid for real-time, decoupled system connectivity.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">Event Hubs</div>
+            <h4>Azure Event Hubs</h4>
+            <p>High-throughput event streaming for telemetry, log aggregation, and real-time analytics pipelines. Designed for scale and reliability.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">Data Factory</div>
+            <h4>Azure Data Factory</h4>
+            <p>ETL and ELT pipelines connecting data sources, warehouses, and lakes. We build data integration flows that support operational and analytical workloads.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Integration modernization with continuity</strong>
+          <p>
+            We do not just replace technology. We translate proven integration patterns, business flows, partner connections,
+            and operational controls into cloud-ready Azure architectures that support future growth and AI-enabled transformation.
+            Every solution is designed for maintainability, observability, and operational confidence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- BIZTALK MIGRATION -->
+    <section id="biztalk">
+      <div class="container">
+        <h2 class="section-title">Moving beyond BizTalk — <span class="gradient-text">with confidence and continuity.</span></h2>
+        <p class="section-sub">
+          With more than 20 years of BizTalk Server experience, SysInt Inc supports organizations through
+          every stage of migration to Azure Integration Services. We preserve business knowledge,
+          reduce migration risk, and design modern solutions that improve agility and long-term scalability.
+        </p>
+
+        <div class="two-col">
+          <div class="panel">
+            <div class="panel-icon">🗺️</div>
+            <h3>Assessment & Planning</h3>
+            <p>
+              We begin by fully understanding your existing BizTalk estate — interfaces, orchestrations,
+              maps, pipelines, trading partners, and operational dependencies. Our assessment identifies
+              risk, business criticality, and the right migration sequence.
+            </p>
+            <ul class="feature-list">
+              <li>Full BizTalk estate inventory and dependency mapping</li>
+              <li>Business criticality scoring and risk profiling</li>
+              <li>Migration wave planning and sequencing</li>
+              <li>Target architecture design for Azure</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-icon">🚀</div>
+            <h3>Migration & Modernization</h3>
+            <p>
+              We execute migration with a preserve-and-improve philosophy — translating proven integration
+              patterns into Azure-native equivalents while improving observability, reducing complexity,
+              and enabling future AI integration.
+            </p>
+            <ul class="feature-list">
+              <li>Pattern-for-pattern migration to Logic Apps and Service Bus</li>
+              <li>EDI and B2B trading partner migration</li>
+              <li>Parallel run, cutover planning, and rollback strategy</li>
+              <li>Post-migration monitoring and stabilization</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h4>Discover</h4>
+            <p>Full inventory of all BizTalk artifacts, dependencies, and operational processes.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h4>Design</h4>
+            <p>Target architecture on Azure Integration Services, mapped to business requirements.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h4>Migrate</h4>
+            <p>Phased migration with parallel running, testing, and business validation at each stage.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <h4>Optimize</h4>
+            <p>Improve observability, reduce cost, and enable AI capabilities on the modern platform.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- EXPERTISE -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">What SysInt Inc brings to <span class="gradient-text">every integration engagement.</span></h2>
+        <p class="section-sub">
+          Our integration practice covers every layer — from architecture and design through delivery, operations, and AI enablement.
+        </p>
+
+        <div class="azure-grid">
+          <div class="azure-card">
+            <div class="azure-tag">Architecture</div>
+            <h4>Integration Architecture</h4>
+            <p>Enterprise integration patterns, reference architectures, and technology selection aligned to business needs and cloud strategy.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">APIs</div>
+            <h4>API Strategy & Design</h4>
+            <p>API-first design, RESTful and event-based APIs, OpenAPI specification, versioning strategy, and developer experience.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">Middleware</div>
+            <h4>Middleware Modernization</h4>
+            <p>Moving from legacy ESB and middleware to modern, cloud-native integration patterns that reduce operational burden.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">B2B</div>
+            <h4>Partner & EDI Integration</h4>
+            <p>AS2, EDIFACT, X12, and custom B2B integration patterns with trading partner management and compliance controls.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">Observability</div>
+            <h4>Integration Monitoring</h4>
+            <p>Logging, alerting, distributed tracing, and operational dashboards for real-time visibility into integration health.</p>
+          </div>
+          <div class="azure-card">
+            <div class="azure-tag">AI-Ready</div>
+            <h4>AI-Enabled Integration</h4>
+            <p>Designing integration estates that can connect to AI systems, expose data to LLMs, and support agentic automation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Ready to modernize your <span class="gradient-text">integration estate?</span></h2>
+          <p>
+            Whether you are planning a BizTalk migration, building new Azure integrations, or designing
+            your enterprise integration strategy — SysInt Inc brings the depth and experience to get it done right.
+          </p>
+          <div class="contact-actions">
+            <a href="index.html" class="btn btn-outline">Back to Home</a>
+            <a href="ai-services.html" class="btn btn-primary">AI Platform Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-brand">
+        <img src="logos/textonly.png" alt="SysInt Inc" class="logo-text" />
+      </a>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="enterprise-integration.html">Enterprise Integration</a>
+        <a href="ai-services.html">AI Services</a>
+        <a href="#contact">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+      <p class="footer-copy">© 2025 SysInt Inc. Integration • Intelligence • Inference</p>
+    </div>
+  </footer>
+
+</body>
+</html>

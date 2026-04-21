@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SysInt Inc | Legal — Terms, Privacy & Cookie Policy</title>
+  <meta name="description" content="SysInt Inc legal policies — Terms of Use, Privacy Policy, and Cookie Policy." />
+  <link rel="icon" type="image/png" href="logos/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060814;
+      --bg2: #0a1020;
+      --panel: rgba(255,255,255,0.055);
+      --panel2: rgba(255,255,255,0.028);
+      --text: #eef3ff;
+      --muted: #aeb8d0;
+      --line: rgba(255,255,255,0.10);
+      --cyan: #18c8ff;
+      --blue: #1f7cff;
+      --violet: #8d1cff;
+      --orange: #ff7a00;
+      --shadow: 0 20px 60px rgba(0,0,0,0.40);
+      --radius: 18px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 10% 8%, rgba(24,200,255,0.13), transparent 30%),
+        radial-gradient(ellipse at 88% 15%, rgba(141,28,255,0.15), transparent 32%),
+        radial-gradient(ellipse at 85% 92%, rgba(255,122,0,0.11), transparent 28%),
+        radial-gradient(ellipse at 12% 90%, rgba(31,124,255,0.09), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px) saturate(160%);
+      background: rgba(6,8,20,0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 20px;
+    }
+
+    .brand img.logo-side {
+      height: 78px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-cta {
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 22px rgba(141,28,255,0.28);
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan) 0%, #5a7dff 40%, var(--violet) 70%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-header h1 {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    /* ── LAYOUT ── */
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 56px 0 80px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR NAV ── */
+    .legal-nav {
+      position: sticky;
+      top: 100px;
+    }
+
+    .legal-nav p {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .legal-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .legal-nav ul li a {
+      display: block;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .legal-nav ul li a:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .legal-nav ul li a.active {
+      color: var(--cyan);
+      border-color: rgba(24,200,255,0.20);
+      background: rgba(24,200,255,0.06);
+    }
+
+    /* ── LEGAL CONTENT ── */
+    .legal-content {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .policy-block {
+      padding: 36px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      scroll-margin-top: 110px;
+    }
+
+    .policy-block::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+    }
+
+    .policy-block h2 {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .policy-updated {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .policy-intro {
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.74;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .policy-item {
+      margin-bottom: 24px;
+    }
+
+    .policy-item:last-child { margin-bottom: 0; }
+
+    .policy-item h3 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .policy-item h3 .item-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(24,200,255,0.12);
+      border: 1px solid rgba(24,200,255,0.20);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--cyan);
+      flex-shrink: 0;
+    }
+
+    .policy-item p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.74;
+      padding-left: 34px;
+    }
+
+    /* ── FOOTER ── */
+    .divider { height: 1px; background: var(--line); }
+
+    footer {
+      padding: 40px 0 56px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand img.logo-text {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.65;
+    }
+
+    .footer-brand:hover img { opacity: 1; }
+
+    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-nav a { color: var(--muted); font-size: 0.9rem; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { color: var(--muted); font-size: 0.85rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .legal-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .legal-nav {
+        position: static;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .legal-nav p { display: none; }
+
+      .legal-nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .policy-block { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="logos/sidelogo-text.png" alt="SysInt Inc" class="logo-side" />
+      </a>
+      <nav class="nav-links">
+        <a href="#terms">Terms of Use</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#cookies">Cookies</a>
+      </nav>
+      <a href="index.html" class="nav-cta">Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="page-header">
+      <div class="container">
+        <h1>Legal <span class="gradient-text">Policies</span></h1>
+        <p>Last reviewed: April 2025 &nbsp;·&nbsp; SysInt Inc</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="legal-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="legal-nav">
+          <p>On this page</p>
+          <ul>
+            <li><a href="#terms" class="active">Terms of Use</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#cookies">Cookie Policy</a></li>
+          </ul>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="legal-content">
+
+          <!-- TERMS OF USE -->
+          <div class="policy-block" id="terms">
+            <h2><span class="gradient-text">Terms of Use</span></h2>
+            <p class="policy-updated">Effective from April 2025</p>
+            <p class="policy-intro">
+              Your access to and use of this website constitutes your acceptance of the terms set out below.
+              Please read them carefully before proceeding. If you do not agree with any part of these terms,
+              we ask that you discontinue use of this site.
+            </p>
+
+            <div class="policy-item">
+              <h3><span class="item-num">1</span>Scope of this Website</h3>
+              <p>
+                This website exists to provide general information about the services and capabilities of SysInt Inc.
+                Nothing on these pages constitutes professional advice, a contractual commitment, or a binding offer
+                of any kind. Any engagement with SysInt Inc is subject to a separate written agreement.
+              </p>
+            </div>
+
+            <div class="policy-item">
+              <h3><span class="item-num">2</span>Information and Content</h3>
+              <p>
+                We take reasonable care to keep the content of this website current and accurate. That said,
+                we make no warranty as to the completeness or fitness of the information for any particular purpose.
+                Content may be updated, corrected, or removed at our discretion and without advance notice.
+              </p>
+            </div>
+
+            <div class="policy-item">
+              <h3><span class="item-num">3</span>Intellectual Property</h3>
+              <p>
+                All content on this website — including text, design, graphics, and branding — is the property of
+                SysInt Inc and is protected under applicable intellectual property law. You may not reproduce,
+                redistribute, or repurpose any content without our prior written consent.
+              </p>
+            </div>
+
+            <div class="policy-item">
+              <h3><span class="item-num">4</span>Revisions to These Terms</h3>
+              <p>
+                We reserve the right to amend these Terms of Use at any time without individual notification.
+                The most current version will always be available on this page. Continued use of the website
+                following any update shall constitute your acceptance of the revised terms.
+              </p>
+            </div>
+          </div>
+
+          <!-- PRIVACY POLICY -->
+          <div class="policy-block" id="privacy">
+            <h2><span class="gradient-text">Privacy Policy</span></h2>
+            <p class="policy-updated">Effective from April 2025</p>
+            <p class="policy-intro">
+              SysInt Inc is committed to handling information responsibly. This policy explains our current
+              approach to personal data in connection with your use of this website. We believe transparency
+              is fundamental to earning and maintaining trust.
+            </p>
+
+            <div class="policy-item">
+              <h3><span class="item-num">1</span>No Personal Data Collected</h3>
+              <p>
+                This website does not collect, record, or retain any personal information from visitors.
+                We do not operate contact forms, user accounts, newsletter sign-ups, or any other mechanism
+                through which personal data would be submitted or stored.
+              </p>
+            </div>
+
+            <div class="policy-item">
+              <h3><span class="item-num">2</span>No Tracking or Profiling</h3>
+              <p>
+                We do not deploy any technology designed to track, identify, or profile individual visitors.
+                This includes analytics scripts, session recording tools, heatmapping services, and similar
+                technologies that observe or infer user behaviour.
+              </p>
+            </div>
+
+            <div class="policy-item">
+              <h3><span class="item-num">3</span>No Third-Party Data Sharing</h3>
+              <p>
+                As no personal data is gathered through this website, there is nothing to share, sell, or
+                transfer. We do not pass visitor information to advertising networks, data brokers, or
+                any other external parties.
+              </p>
+            </div>
+
+            <div class="policy-item">
+              <h3><span class="item-num">4</span>Policy Updates</h3>
+              <p>
+                Should our data practices change — for example, if we introduce an enquiry form or any
+                other interactive feature — this Privacy Policy will be updated before such functionality
+                goes live. We will not collect data without first communicating how it will be handled.
+              </p>
+            </div>
+          </div>
+
+          <!-- COOKIE POLICY -->
+          <div class="policy-block" id="cookies">
+            <h2><span class="gradient-text">Cookie Policy</span></h2>
+            <p class="policy-updated">Effective from April 2025</p>
+            <p class="policy-intro">
+              This website operates without the use of cookies. We believe in keeping things simple and
+              transparent. Below is a clear statement of our current approach to cookies and browser-based
+              storage technologies.
+            </p>
+
+            <div class="policy-item">
+              <h3><span class="item-num">1</span>No Cookies in Use</h3>
+              <p>
+                SysInt Inc does not set any cookies on your device when you visit this website —
+                neither first-party nor third-party. This covers all purposes: analytics, advertising,
+                personalisation, session management, and technical functionality.
+              </p>
+            </div>
+
+            <div class="policy-item">
+              <h3><span class="item-num">2</span>No Behavioural Monitoring</h3>
+              <p>
+                Because no cookies or equivalent client-side storage mechanisms are used, we have no
+                means of tracking, identifying, or monitoring individual visitors across sessions or
+                across websites. Your browsing activity on this site is not recorded.
+              </p>
+            </div>
+
+            <div class="policy-item">
+              <h3><span class="item-num">3</span>Future Changes</h3>
+              <p>
+                If we introduce cookies or similar technologies at any point in the future, this policy
+                will be updated and a cookie consent mechanism will be implemented in compliance with
+                applicable regulations before any cookies are placed on your device.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-brand">
+        <img src="logos/textonly.png" alt="SysInt Inc" class="logo-text" />
+      </a>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="enterprise-integration.html">Enterprise Integration</a>
+        <a href="ai-services.html">AI Services</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+      <p class="footer-copy">© 2025 SysInt Inc. Integration • Intelligence • Inference</p>
+    </div>
+  </footer>
+
+</body>
+</html>
