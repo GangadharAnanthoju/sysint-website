@@ -1070,86 +1070,8 @@
     </div>
   </footer>
 
-  <!-- CHAT BUBBLE -->
-  <style>
-    #chat-bubble {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 12px;
-    }
-
-    #chat-panel {
-      width: 380px;
-      height: 560px;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.55);
-      display: none;
-      background: #060814;
-    }
-
-    #chat-panel iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    #chat-toggle {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--cyan), var(--violet), var(--orange));
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 28px rgba(141,28,255,0.40);
-      transition: transform 0.2s, box-shadow 0.2s;
-      flex-shrink: 0;
-    }
-
-    #chat-toggle:hover {
-      transform: scale(1.08);
-      box-shadow: 0 12px 36px rgba(141,28,255,0.55);
-    }
-
-    #chat-toggle svg { width: 26px; height: 26px; fill: #fff; }
-
-    @media (max-width: 480px) {
-      #chat-panel { width: calc(100vw - 32px); height: 70vh; }
-      #chat-bubble { bottom: 16px; right: 16px; }
-    }
-  </style>
-
-  <div id="chat-bubble">
-    <div id="chat-panel">
-      <iframe src="https://uskits94.sysintinc.com/" title="SysInt AI Agent" allow="microphone"></iframe>
-    </div>
-    <button id="chat-toggle" aria-label="Open chat" onclick="toggleChat()">
-      <svg id="icon-chat" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z"/></svg>
-      <svg id="icon-close" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-    </button>
-  </div>
-
-  <script>
-    function toggleChat() {
-      var panel = document.getElementById('chat-panel');
-      var iconChat = document.getElementById('icon-chat');
-      var iconClose = document.getElementById('icon-close');
-      var open = panel.style.display === 'block';
-      panel.style.display = open ? 'none' : 'block';
-      iconChat.style.display = open ? '' : 'none';
-      iconClose.style.display = open ? 'none' : '';
-    }
-  </script>
+  <link rel="stylesheet" href="chat-widget.css" />
+  <script src="chat-widget.js"></script>
 
 </body>
 </html>

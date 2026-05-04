@@ -63,7 +63,7 @@
     /* ── HEADER ── */
     .paper-header {
       background: linear-gradient(135deg, #0d1528 0%, #0a1020 60%, #110820 100%);
-      padding: 36px 48px 32px;
+      padding: 22px 40px 20px;
       position: relative;
       overflow: hidden;
     }
@@ -91,11 +91,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 28px;
+      margin-bottom: 14px;
     }
 
     .header-logo img {
-      height: 52px;
+      height: 66px;
       width: auto;
       object-fit: contain;
     }
@@ -116,11 +116,11 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #18c8ff;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .header-title {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: 900;
       line-height: 1.15;
       letter-spacing: -0.025em;
@@ -136,27 +136,27 @@
     }
 
     .header-sub {
-      margin-top: 12px;
-      font-size: 0.88rem;
+      margin-top: 8px;
+      font-size: 0.82rem;
       color: rgba(174,184,208,0.85);
       max-width: 500px;
-      line-height: 1.65;
+      line-height: 1.55;
     }
 
     /* ── BODY ── */
     .paper-body {
       flex: 1;
-      padding: 44px 48px 36px;
+      padding: 20px 40px 16px;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 12px;
     }
 
     /* ── WAY CARDS ── */
     .way {
       display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 0 22px;
+      grid-template-columns: 52px 1fr;
+      gap: 0 18px;
       align-items: start;
     }
 
@@ -168,12 +168,12 @@
     }
 
     .way-num {
-      width: 52px; height: 52px;
+      width: 42px; height: 42px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 900;
       color: #fff;
       flex-shrink: 0;
@@ -210,18 +210,18 @@
     .way:nth-child(3) .way-label { color: #ff7a00; }
 
     .way-title {
-      font-size: 1.05rem;
+      font-size: 0.96rem;
       font-weight: 800;
       color: #12203a;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       letter-spacing: -0.01em;
     }
 
     .way-desc {
-      font-size: 0.87rem;
+      font-size: 0.82rem;
       color: #4a5878;
-      line-height: 1.7;
-      margin-bottom: 12px;
+      line-height: 1.58;
+      margin-bottom: 8px;
     }
 
     .way-examples {
@@ -255,16 +255,16 @@
 
     .time-item {
       background: #f8f9fc;
-      padding: 18px 20px;
+      padding: 12px 16px;
       text-align: center;
     }
 
     .time-num {
-      font-size: 1.55rem;
+      font-size: 1.3rem;
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .time-item:nth-child(1) .time-num { color: #18c8ff; }
@@ -283,7 +283,7 @@
       margin-top: auto;
       background: #f8f9fc;
       border-top: 2px solid #e8ecf4;
-      padding: 24px 48px;
+      padding: 16px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -358,23 +358,149 @@
       background: #dde2ed;
     }
 
+    /* ── CHECKLIST ── */
+    .checklist-box {
+      background: #f4f6fb;
+      border: 1px solid #dde3f0;
+      border-left: 4px solid #8d1cff;
+      border-radius: 14px;
+      padding: 18px 22px;
+    }
+
+    .checklist-box h4 {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8d1cff;
+      margin-bottom: 10px;
+    }
+
+    .checklist-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px 24px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #2d3a56;
+      line-height: 1.45;
+    }
+
+    .checklist-item::before {
+      content: "✓";
+      font-weight: 900;
+      font-size: 0.78rem;
+      color: #8d1cff;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .checklist-note {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #4a5878;
+      font-style: italic;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .tl-item {
+      background: #f4f6fb;
+      border: 1px solid #dde3f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      position: relative;
+    }
+
+    .tl-week {
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .tl-item:nth-child(1) .tl-week { color: #18c8ff; }
+    .tl-item:nth-child(2) .tl-week { color: #8d1cff; }
+    .tl-item:nth-child(3) .tl-week { color: #ff7a00; }
+
+    .tl-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #12203a;
+      margin-bottom: 4px;
+    }
+
+    .tl-desc {
+      font-size: 0.78rem;
+      color: #4a5878;
+      line-height: 1.5;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: #e4e8f0;
+    }
+
+    .mini-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8d9ab5;
+      margin-bottom: 8px;
+    }
+
+    .bottom-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .bottom-left, .bottom-right { display: flex; flex-direction: column; gap: 0; }
+
     /* ── PRINT ── */
     @media print {
-      html, body { background: #fff; }
+      html, body { background: #fff; font-size: 88%; }
       .page-wrap { padding: 0; background: #fff; }
       .print-btn { display: none !important; }
 
       .paper {
         width: 100%;
-        min-height: auto;
+        min-height: auto !important;
         box-shadow: none;
         border-radius: 0;
         page-break-inside: avoid;
       }
 
+      .paper-body {
+        flex: 0 0 auto !important;
+        padding: 16px 36px 12px !important;
+        gap: 10px !important;
+      }
+
       .paper-header {
+        padding: 16px 36px 14px !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+      }
+
+      .header-top { margin-bottom: 10px !important; }
+
+      .paper-footer {
+        padding: 12px 36px !important;
       }
 
       .way-num {
@@ -385,6 +511,63 @@
       .footer-cta-btn {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+      }
+
+      .time-banner {
+        display: flex !important;
+        flex-direction: row !important;
+      }
+
+      .time-item {
+        flex: 1;
+        white-space: nowrap;
+        padding: 10px 12px !important;
+      }
+
+      .time-label {
+        font-size: 0.68rem !important;
+        white-space: nowrap;
+      }
+
+      .paper-footer {
+        flex-direction: row !important;
+        align-items: center !important;
+        padding: 10px 36px !important;
+        gap: 16px !important;
+      }
+
+      .footer-name {
+        font-size: 0.82rem !important;
+        margin-bottom: 1px !important;
+      }
+
+      .footer-role {
+        font-size: 0.66rem !important;
+        margin-bottom: 4px !important;
+      }
+
+      .footer-details {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px 16px !important;
+      }
+
+      .footer-detail {
+        font-size: 0.72rem !important;
+      }
+
+      .footer-cta p {
+        font-size: 0.7rem !important;
+        margin-bottom: 6px !important;
+      }
+
+      .footer-cta-btn {
+        padding: 7px 16px !important;
+        font-size: 0.76rem !important;
+      }
+
+      .footer-divider {
+        height: 48px !important;
       }
     }
 
@@ -403,11 +586,6 @@
 
 <div class="page-wrap">
 
-  <button class="print-btn" onclick="window.print()">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
-    Export / Print as PDF
-  </button>
-
   <div class="paper">
 
     <!-- HEADER -->
@@ -420,10 +598,7 @@
       </div>
       <div class="header-eyebrow">AI for Local Business</div>
       <h1 class="header-title">3 Ways AI Can Save Your<br>Local Business <span>5 Hours a Week</span></h1>
-      <p class="header-sub">
-        No tech background needed. These are practical, low-cost changes that local businesses
-        are making right now — and seeing real results within the first month.
-      </p>
+      <p class="header-sub">No tech background needed. These are practical, low-cost changes that local businesses are making right now — and seeing real results within the first month.</p>
     </div>
 
     <!-- BODY -->
@@ -439,10 +614,8 @@
           <div class="way-label">Save ~2 hrs/week</div>
           <div class="way-title">Stop Answering the Same Questions Over and Over</div>
           <p class="way-desc">
-            Most local businesses spend hours each week answering identical questions — "What are your hours?",
-            "Do you have parking?", "How much does X cost?" An AI chatbot on your website or Google Business
-            profile handles all of these instantly, 24/7, without you lifting a finger.
-            Customers get answers in seconds. You get your time back.
+            Most local businesses spend hours each week answering the same questions — hours, pricing, parking, policies.
+            An AI chatbot on your website handles all of these instantly, 24/7, so customers get answers in seconds and you get your time back.
           </p>
           <div class="way-examples">
             <span class="example-tag">Hours &amp; Location</span>
@@ -463,10 +636,8 @@
           <div class="way-label">Save ~2 hrs/week</div>
           <div class="way-title">Let AI Book Appointments While You Sleep</div>
           <p class="way-desc">
-            Phone tag wastes enormous time — playing back-and-forth to confirm a haircut, a consultation,
-            or a service call. An AI booking agent connects to your calendar and lets customers schedule
-            themselves any time of day. No hold music. No missed calls. Businesses using AI scheduling
-            see up to 60% fewer no-shows thanks to automatic reminders sent the day before.
+            Phone tag wastes hours — back-and-forth to confirm a haircut, a consultation, or a service call.
+            An AI booking agent connects to your calendar so customers self-schedule any time, and automatic reminders cut no-shows by up to 60%.
           </p>
           <div class="way-examples">
             <span class="example-tag">Salons &amp; Spas</span>
@@ -486,11 +657,8 @@
           <div class="way-label">Save ~1 hr/week + revenue gain</div>
           <div class="way-title">Capture Every Lead — Even After You Close</div>
           <p class="way-desc">
-            Most local business inquiries happen outside business hours. Without an AI agent,
-            those leads go to a competitor who responds first. An AI agent greets every visitor,
-            collects their name, need, and contact info, and sends it straight to your inbox
-            or CRM. Real estate agents using AI report 2.5× more booked appointments.
-            Home service businesses cut lead response costs by 70%.
+            Most inquiries happen after hours — and without an AI agent, those leads go to a competitor who responds first.
+            An AI agent greets every visitor, captures their details, and sends them to your inbox. Real estate agents report 2.5× more bookings; home services cut lead costs by 70%.
           </p>
           <div class="way-examples">
             <span class="example-tag">After-Hours Inquiries</span>
@@ -501,19 +669,37 @@
         </div>
       </div>
 
+      <div class="section-divider"></div>
+
+      <!-- CHECKLIST -->
+      <div class="checklist-box">
+        <h4>Is AI right for your business? Check what applies:</h4>
+        <div class="checklist-items">
+          <div class="checklist-item">You answer the same questions 5+ times a week</div>
+          <div class="checklist-item">You miss calls or inquiries after hours</div>
+          <div class="checklist-item">Scheduling takes 30+ minutes of your day</div>
+          <div class="checklist-item">Leads go cold before you get a chance to respond</div>
+          <div class="checklist-item">You want to grow without hiring more staff</div>
+          <div class="checklist-item">Competitors are responding to customers faster than you</div>
+        </div>
+        <p class="checklist-note">If you checked even one — an AI agent can start saving you time this week.</p>
+      </div>
+
+      <div class="section-divider"></div>
+
       <!-- TIME SAVED SUMMARY -->
       <div class="time-banner">
         <div class="time-item">
           <div class="time-num">5 hrs</div>
-          <div class="time-label">Saved every week<br>on average</div>
+          <div class="time-label">Saved every week on average</div>
         </div>
         <div class="time-item">
           <div class="time-num">24/7</div>
-          <div class="time-label">Coverage with<br>no extra staff</div>
+          <div class="time-label">Coverage, no extra staff</div>
         </div>
         <div class="time-item">
           <div class="time-num">48 hrs</div>
-          <div class="time-label">Typical time<br>to go live</div>
+          <div class="time-label">Typical time to go live</div>
         </div>
       </div>
 
