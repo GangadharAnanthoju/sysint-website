@@ -1,0 +1,15 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/logos/*", "/*.css", "/*.js", "/*.png", "/*.jpg", "/*.ico"]
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/error.html",
+      "statusCode": 404
+    }
+  },
+  "globalHeaders": {
+    "Cache-Control": "public, max-age=3600"
+  }
+}

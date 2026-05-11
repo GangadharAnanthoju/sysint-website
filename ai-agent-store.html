@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SysInt Inc | AI Agent Store — AI Bots for Local Business</title>
+  <meta name="description" content="Ready-to-deploy AI agents for restaurants, salons, clinics, real estate, retail, home services, legal, and education. Get your business a 24/7 AI assistant." />
+  <link rel="icon" type="image/png" href="logos/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060814;
+      --bg2: #0a1020;
+      --panel: rgba(255,255,255,0.055);
+      --panel2: rgba(255,255,255,0.028);
+      --text: #eef3ff;
+      --muted: #aeb8d0;
+      --line: rgba(255,255,255,0.10);
+      --cyan: #18c8ff;
+      --blue: #1f7cff;
+      --violet: #8d1cff;
+      --magenta: #ff2b8c;
+      --orange: #ff7a00;
+      --amber: #ffb400;
+      --green: #00d084;
+      --teal: #00d4aa;
+      --shadow: 0 20px 60px rgba(0,0,0,0.40);
+      --radius: 22px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 10% 8%, rgba(24,200,255,0.13), transparent 30%),
+        radial-gradient(ellipse at 88% 15%, rgba(141,28,255,0.15), transparent 32%),
+        radial-gradient(ellipse at 85% 92%, rgba(255,122,0,0.11), transparent 28%),
+        radial-gradient(ellipse at 12% 90%, rgba(31,124,255,0.09), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px) saturate(160%);
+      background: rgba(6,8,20,0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 20px;
+    }
+
+    .brand img.logo-side {
+      height: 78px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: var(--cyan); }
+
+    .nav-page-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-page-links a {
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .nav-page-links a:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .nav-cta {
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 22px rgba(141,28,255,0.28);
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── SHARED ── */
+    section { padding: 60px 0; scroll-margin-top: 106px; }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.72;
+      margin-bottom: 40px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan) 0%, #5a7dff 40%, var(--violet) 70%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      font-family: inherit;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+      color: #fff;
+      box-shadow: 0 6px 22px rgba(141,28,255,0.28);
+    }
+
+    .btn-primary:hover { box-shadow: 0 10px 32px rgba(141,28,255,0.40); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.22) !important;
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn-outline:hover { border-color: rgba(255,255,255,0.45) !important; background: rgba(255,255,255,0.06); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 0 56px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(24,200,255,0.30);
+      background: rgba(24,200,255,0.07);
+      color: var(--cyan);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge .pulse {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 620px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-stat-num {
+      font-size: 2.1rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: "";
+      position: absolute;
+      top: 38px;
+      left: calc(16.66% + 12px);
+      right: calc(16.66% + 12px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+      opacity: 0.35;
+    }
+
+    .step-card {
+      padding: 32px 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      text-align: center;
+      position: relative;
+    }
+
+    .step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #fff;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── SERVICE CARDS ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .svc-card {
+      padding: 32px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+
+    .svc-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.50);
+    }
+
+    .svc-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .svc-card.c1::before { background: linear-gradient(90deg, #ff7a00, #ffb400); }
+    .svc-card.c2::before { background: linear-gradient(90deg, #ff2b8c, #8d1cff); }
+    .svc-card.c3::before { background: linear-gradient(90deg, #18c8ff, #00d4aa); }
+    .svc-card.c4::before { background: linear-gradient(90deg, #1f7cff, #8d1cff); }
+    .svc-card.c5::before { background: linear-gradient(90deg, #00d084, #18c8ff); }
+    .svc-card.c6::before { background: linear-gradient(90deg, #ff7a00, #ff2b8c); }
+    .svc-card.c7::before { background: linear-gradient(90deg, #8d1cff, #1f7cff); }
+    .svc-card.c8::before { background: linear-gradient(90deg, #ffb400, #00d084); }
+
+    .svc-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .svc-icon {
+      font-size: 2.4rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .svc-meta {}
+
+    .svc-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .svc-card h3 {
+      font-size: 1.22rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .svc-tagline {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .svc-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 24px;
+    }
+
+    .svc-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: #c8d4ee;
+      line-height: 1.5;
+    }
+
+    .svc-features li::before {
+      content: "✓";
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .svc-demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(255,255,255,0.18);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      background: transparent;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .svc-demo-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .plan-card {
+      padding: 36px 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan-card.featured {
+      border-color: rgba(24,200,255,0.35);
+      background: linear-gradient(160deg, rgba(24,200,255,0.07), rgba(141,28,255,0.07));
+    }
+
+    .plan-card.featured::after {
+      content: "Most Popular";
+      position: absolute;
+      top: 16px; right: 16px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      color: #fff;
+    }
+
+    .plan-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+
+    .plan-headline {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .plan-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.87rem;
+      color: #c8d4ee;
+      line-height: 1.5;
+    }
+
+    .plan-features li::before {
+      content: "✓";
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .plan-features li.dimmed { color: var(--muted); }
+    .plan-features li.dimmed::before { color: rgba(255,255,255,0.20); }
+
+    /* ── TRUST SIGNALS ── */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .trust-card {
+      padding: 26px 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .trust-icon { font-size: 2rem; margin-bottom: 12px; }
+
+    .trust-card h4 {
+      font-size: 0.94rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .trust-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 32px;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 0 56px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand img.logo-text {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.65;
+    }
+
+    .footer-brand:hover img { opacity: 1; }
+
+    .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-nav a:hover { color: #fff; }
+
+    .footer-copy {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .steps-grid::before { display: none; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="logos/sidelogo-text.png" alt="SysInt Inc" class="logo-side" />
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="enterprise-integration.html">Integration</a>
+        <a href="ai-services.html">AI Services</a>
+        <a href="ai-agent-store.html" class="active">AI Agent Store</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Get Your Agent</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-badge"><span class="pulse"></span>Now Open — AI Agent Store</div>
+        <h1>AI Agents that work for your<br><span class="gradient-text">local business 24/7.</span></h1>
+        <p class="hero-lead">
+          Ready-to-deploy AI assistants purpose-built for local business. Handle bookings,
+          answer questions, capture leads, and serve customers around the clock —
+          without adding staff or technical complexity.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get Your AI Agent</a>
+          <button class="btn btn-outline" onclick="toggleChat()">Try Live Demo →</button>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">80%</div>
+            <div class="hero-stat-label">of small businesses<br>adopting chatbots</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">20+</div>
+            <div class="hero-stat-label">hours saved<br>per week</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">24/7</div>
+            <div class="hero-stat-label">customer coverage<br>no staff needed</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">2.5×</div>
+            <div class="hero-stat-label">more booked<br>appointments</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works">
+      <div class="container">
+        <span class="section-label">Simple Setup</span>
+        <h2 class="section-title">Go live in <span class="gradient-text">three steps.</span></h2>
+        <p class="section-sub">No technical team required. We handle everything from configuration to deployment.</p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>Pick Your Industry</h3>
+            <p>Choose from 8 pre-built agent templates designed specifically for your business type — each one trained on real-world customer conversations.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Customize Your Agent</h3>
+            <p>Add your business name, hours, services, pricing, and FAQs. Connect your booking system or calendar if you have one. We tailor it to you.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Go Live</h3>
+            <p>Embed a chat widget on your website, link it from Google Business, or deploy to WhatsApp. Your agent starts handling customers immediately.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <span class="section-label">Industry Agents</span>
+        <h2 class="section-title">AI agents for every <span class="gradient-text">local business.</span></h2>
+        <p class="section-sub">Each agent is pre-trained for its industry — knowing what customers ask, when they ask it, and how to respond with confidence.</p>
+
+        <div class="services-grid">
+
+          <!-- 1. Restaurants -->
+          <div class="svc-card c1" id="restaurants">
+            <div class="svc-header">
+              <div class="svc-icon">🍽️</div>
+              <div class="svc-meta">
+                <div class="svc-tag">Food &amp; Hospitality</div>
+                <h3>Restaurants &amp; Cafés</h3>
+                <p class="svc-tagline">Never miss a reservation or catering inquiry again</p>
+              </div>
+            </div>
+            <ul class="svc-features">
+              <li>Table reservation requests and confirmations 24/7</li>
+              <li>Menu Q&amp;A — dishes, allergens, dietary options</li>
+              <li>Hours, location, parking, and directions</li>
+              <li>Catering and private event inquiries</li>
+              <li>Wait time updates and waitlist management</li>
+              <li>Daily specials and promotion announcements</li>
+            </ul>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+          </div>
+
+          <!-- 2. Salons & Spas -->
+          <div class="svc-card c2" id="salons">
+            <div class="svc-header">
+              <div class="svc-icon">💇</div>
+              <div class="svc-meta">
+                <div class="svc-tag">Beauty &amp; Wellness</div>
+                <h3>Salons &amp; Spas</h3>
+                <p class="svc-tagline">Fill your calendar and reduce no-shows automatically</p>
+              </div>
+            </div>
+            <ul class="svc-features">
+              <li>Appointment booking, rescheduling, and cancellation</li>
+              <li>Service menu and pricing Q&amp;A</li>
+              <li>Automated appointment reminders to cut no-shows</li>
+              <li>Stylist and therapist availability lookup</li>
+              <li>Product recommendations and upsell prompts</li>
+              <li>Loyalty points and offer inquiries</li>
+            </ul>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+          </div>
+
+          <!-- 3. Medical Clinics -->
+          <div class="svc-card c3" id="clinics">
+            <div class="svc-header">
+              <div class="svc-icon">🏥</div>
+              <div class="svc-meta">
+                <div class="svc-tag">Healthcare</div>
+                <h3>Medical &amp; Dental Clinics</h3>
+                <p class="svc-tagline">Patient intake and scheduling without the phone queue</p>
+              </div>
+            </div>
+            <ul class="svc-features">
+              <li>Appointment scheduling and provider selection</li>
+              <li>After-hours patient intake and callback requests</li>
+              <li>Insurance and billing FAQs</li>
+              <li>Pre-visit instructions and preparation guidance</li>
+              <li>Prescription refill request routing</li>
+              <li>Directions, parking, and new patient registration</li>
+            </ul>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+          </div>
+
+          <!-- 4. Real Estate -->
+          <div class="svc-card c4" id="realestate">
+            <div class="svc-header">
+              <div class="svc-icon">🏠</div>
+              <div class="svc-meta">
+                <div class="svc-tag">Property</div>
+                <h3>Real Estate Agencies</h3>
+                <p class="svc-tagline">Capture every lead — even while you're showing homes</p>
+              </div>
+            </div>
+            <ul class="svc-features">
+              <li>Property inquiry handling and lead qualification</li>
+              <li>Viewing appointment scheduling</li>
+              <li>Neighborhood, pricing, and availability Q&amp;A</li>
+              <li>New listing announcements and alerts</li>
+              <li>Mortgage and financing FAQ routing</li>
+              <li>Agent introduction and contact capture</li>
+            </ul>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+          </div>
+
+          <!-- 5. Retail -->
+          <div class="svc-card c5" id="retail">
+            <div class="svc-header">
+              <div class="svc-icon">🛍️</div>
+              <div class="svc-meta">
+                <div class="svc-tag">Retail</div>
+                <h3>Retail Stores</h3>
+                <p class="svc-tagline">Every shopper gets instant answers — online or in-store</p>
+              </div>
+            </div>
+            <ul class="svc-features">
+              <li>Product availability and stock Q&amp;A</li>
+              <li>Personalized product recommendations</li>
+              <li>Store hours, location, and return policy</li>
+              <li>Order status and tracking support</li>
+              <li>Promotions, discounts, and loyalty program info</li>
+              <li>After-hours lead capture and callback requests</li>
+            </ul>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+          </div>
+
+          <!-- 6. Home Services -->
+          <div class="svc-card c6" id="homeservices">
+            <div class="svc-header">
+              <div class="svc-icon">🔧</div>
+              <div class="svc-meta">
+                <div class="svc-tag">Trades &amp; Home Services</div>
+                <h3>Home Services</h3>
+                <p class="svc-tagline">Capture after-hours leads before competitors wake up</p>
+              </div>
+            </div>
+            <ul class="svc-features">
+              <li>Service inquiry intake — plumbing, HVAC, electrical, landscaping</li>
+              <li>Quote request collection and job scoping</li>
+              <li>Service area coverage confirmation</li>
+              <li>Emergency job prioritization and callback</li>
+              <li>Job scheduling and availability lookup</li>
+              <li>Service warranty and maintenance FAQs</li>
+            </ul>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+          </div>
+
+          <!-- 7. Legal & Professional -->
+          <div class="svc-card c7" id="legal">
+            <div class="svc-header">
+              <div class="svc-icon">⚖️</div>
+              <div class="svc-meta">
+                <div class="svc-tag">Legal &amp; Professional Services</div>
+                <h3>Legal &amp; Consulting Firms</h3>
+                <p class="svc-tagline">Qualify leads and book consultations around the clock</p>
+              </div>
+            </div>
+            <ul class="svc-features">
+              <li>After-hours client intake and case type screening</li>
+              <li>Initial consultation booking and confirmation</li>
+              <li>Practice area and fee structure Q&amp;A</li>
+              <li>Document checklist and preparation guidance</li>
+              <li>Attorney or advisor assignment routing</li>
+              <li>Referral capture and conflict-of-interest pre-check</li>
+            </ul>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+          </div>
+
+          <!-- 8. Education & Tutoring -->
+          <div class="svc-card c8" id="education">
+            <div class="svc-header">
+              <div class="svc-icon">🎓</div>
+              <div class="svc-meta">
+                <div class="svc-tag">Education</div>
+                <h3>Education &amp; Tutoring</h3>
+                <p class="svc-tagline">Answer parent and student questions instantly, at any hour</p>
+              </div>
+            </div>
+            <ul class="svc-features">
+              <li>Course availability, schedule, and enrollment Q&amp;A</li>
+              <li>Trial class and tour booking</li>
+              <li>Tutor matching by subject and student level</li>
+              <li>Fee structure, payment plans, and sibling discounts</li>
+              <li>Progress check-in requests and parent communication</li>
+              <li>Academic calendar, holidays, and event info</li>
+            </ul>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PLANS -->
+    <section id="plans">
+      <div class="container">
+        <span class="section-label">Plans</span>
+        <h2 class="section-title">Simple plans that <span class="gradient-text">grow with you.</span></h2>
+        <p class="section-sub">All plans include setup, training on your business data, and ongoing support. No contracts — cancel anytime.</p>
+
+        <div class="pricing-grid">
+
+          <div class="plan-card">
+            <div class="plan-name">Starter</div>
+            <div class="plan-headline">Get Online Fast</div>
+            <p class="plan-desc">Perfect for businesses taking their first step with AI — up and running in days, not months.</p>
+            <ul class="plan-features">
+              <li>1 AI agent for your website</li>
+              <li>Pre-built industry template</li>
+              <li>Custom business name, hours &amp; FAQs</li>
+              <li>Lead capture and contact collection</li>
+              <li>Email summary of conversations</li>
+              <li class="dimmed">Calendar / booking integration</li>
+              <li class="dimmed">CRM or WhatsApp connection</li>
+              <li class="dimmed">Custom workflows</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;border-radius:12px">Get Started →</a>
+          </div>
+
+          <div class="plan-card featured">
+            <div class="plan-name">Growth</div>
+            <div class="plan-headline">Automate &amp; Convert</div>
+            <p class="plan-desc">For businesses that want real automation — bookings, CRM sync, and multi-channel reach.</p>
+            <ul class="plan-features">
+              <li>1 AI agent — website + WhatsApp</li>
+              <li>Appointment &amp; booking system integration</li>
+              <li>CRM lead sync (HubSpot, Salesforce, Zoho)</li>
+              <li>Automated follow-up messages</li>
+              <li>Conversation analytics dashboard</li>
+              <li>Monthly performance review</li>
+              <li class="dimmed">Multiple agents</li>
+              <li class="dimmed">White-label branding</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center">Get Started →</a>
+          </div>
+
+          <div class="plan-card">
+            <div class="plan-name">Enterprise</div>
+            <div class="plan-headline">Full Custom Build</div>
+            <p class="plan-desc">For multi-location businesses or agencies that want agents branded and deployed at scale.</p>
+            <ul class="plan-features">
+              <li>Unlimited agents across locations</li>
+              <li>White-label branding — your name, your look</li>
+              <li>Custom workflows and approval logic</li>
+              <li>Deep integrations — ERP, POS, custom APIs</li>
+              <li>Dedicated success manager</li>
+              <li>SLA-backed support and uptime</li>
+              <li>Agent resale program available</li>
+              <li>Priority onboarding</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;border-radius:12px">Talk to Us →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- TRUST -->
+    <section id="why-sysint">
+      <div class="container">
+        <span class="section-label">Why SysInt</span>
+        <h2 class="section-title">Built by integration engineers, <span class="gradient-text">not just chatbot vendors.</span></h2>
+        <p class="section-sub">Our agents are backed by 20+ years of enterprise integration experience — so they connect reliably with the systems your business already uses.</p>
+
+        <div class="trust-grid">
+          <div class="trust-card">
+            <div class="trust-icon">⚡</div>
+            <h4>Fast Deployment</h4>
+            <p>Most agents go live within 48–72 hours. We handle setup so you can focus on your business.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">🔗</div>
+            <h4>Real Integrations</h4>
+            <p>Connects to calendars, booking platforms, CRMs, and POS systems — not just a chat widget.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">🔒</div>
+            <h4>Privacy First</h4>
+            <p>Customer data stays secure. We follow GDPR and CCPA guidelines with no third-party data selling.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">📊</div>
+            <h4>Measurable ROI</h4>
+            <p>Track leads captured, bookings made, and hours saved — every month, in plain language.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Ready to put your business on <span class="gradient-text">autopilot?</span></h2>
+          <p>
+            Tell us your industry and we'll recommend the right agent, walk you through setup,
+            and get you live within days. No commitment required.
+          </p>
+          <div class="contact-actions">
+            <button class="btn btn-primary" onclick="toggleChat()">Chat With Us Now</button>
+            <a href="index.html#contact" class="btn btn-outline">Contact SysInt →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-brand">
+        <img src="logos/textonly.png" alt="SysInt Inc" class="logo-text" />
+      </a>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="enterprise-integration.html">Enterprise Integration</a>
+        <a href="ai-services.html">AI Services</a>
+        <a href="ai-agent-store.html">AI Agent Store</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+      <p class="footer-copy">© 2025 SysInt Inc. Integration • Intelligence • Inference</p>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="chat-widget.css" />
+  <script src="chat-widget.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "PowerShell(az account show --query \"{subscription:name, id:id, user:user.name}\" --output table 2>&1)",
+      "PowerShell(swa --version 2>&1)",
+      "PowerShell(npm install -g @azure/static-web-apps-cli@latest 2>&1)",
+      "PowerShell(tail -5)",
+      "PowerShell(swa --version)"
+    ]
+  }
+}

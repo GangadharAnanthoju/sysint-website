@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SysInt Inc | AI Platform Services</title>
+  <meta name="description" content="SysInt Inc AI Platform — AI integration, agentic automation, inference platforms, and intelligent applications for the enterprise." />
+  <link rel="icon" type="image/png" href="logos/logo.png" />
+  <style>
+    :root {
+      --bg: #07101f;
+      --bg2: #0c1828;
+      --surface: rgba(255,255,255,0.05);
+      --surface2: rgba(255,255,255,0.03);
+      --text: #e8f0ff;
+      --muted: #8fa3c4;
+      --line: rgba(255,255,255,0.09);
+      --azure: #0078d4;
+      --azure-light: #50e6ff;
+      --azure-bright: #00b7ff;
+      --teal: #00d4aa;
+      --indigo: #4060e0;
+      --purple: #7c5be8;
+      --green: #14d48a;
+      --shadow: 0 16px 56px rgba(0,0,0,0.45);
+      --shadow-glow: 0 8px 40px rgba(0,120,212,0.22);
+      --radius: 20px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, 'Segoe UI', Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 20% 5%, rgba(0,120,212,0.16), transparent 35%),
+        radial-gradient(ellipse at 85% 15%, rgba(80,230,255,0.10), transparent 30%),
+        radial-gradient(ellipse at 10% 90%, rgba(0,212,170,0.10), transparent 32%),
+        radial-gradient(ellipse at 90% 85%, rgba(124,91,232,0.12), transparent 30%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(7,16,31,0.82);
+      border-bottom: 1px solid rgba(0,120,212,0.18);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 20px;
+    }
+
+    /* logo.png: nav icon — icon-only in glowing azure container (dark theme, compact) */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0,120,212,0.30), rgba(80,230,255,0.20));
+      border: 1px solid rgba(80,230,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,183,255,0.18);
+    }
+
+    .brand-icon img {
+      width: 28px; height: 28px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #fff;
+    }
+
+    .brand-tag {
+      font-size: 0.76rem;
+      color: var(--azure-light);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--azure-light); }
+
+    .nav-page-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-page-links a {
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.87rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .nav-page-links a:hover,
+    .nav-page-links a.active {
+      border-color: var(--azure-light);
+      color: var(--azure-light);
+    }
+
+    .nav-cta {
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--azure), var(--azure-bright));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 24px rgba(0,120,212,0.30);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 0 56px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,183,255,0.40), transparent);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,183,255,0.25);
+      background: rgba(0,120,212,0.10);
+      color: var(--azure-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--azure-bright);
+      box-shadow: 0 0 8px rgba(0,183,255,0.60);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.07;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--azure-light) 0%, var(--azure-bright) 40%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .lead {
+      font-size: 1.07rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 14px;
+      line-height: 1.74;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .btn-azure {
+      background: linear-gradient(90deg, var(--azure), var(--azure-bright));
+      color: #fff;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-azure:hover { box-shadow: 0 12px 48px rgba(0,120,212,0.38); transform: translateY(-1px); }
+
+    .btn-teal {
+      background: linear-gradient(90deg, var(--teal), #00b894);
+      color: #07101f;
+      font-weight: 800;
+      box-shadow: 0 8px 28px rgba(0,212,170,0.22);
+    }
+
+    .btn-teal:hover { transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+    }
+
+    .btn-outline:hover { border-color: var(--azure-light); color: var(--azure-light); }
+
+    /* Hero right panel — toplogo-text.png as featured branding */
+    .hero-panel {
+      position: relative;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse, rgba(0,120,212,0.16), transparent 65%);
+      z-index: 0;
+    }
+
+    .hero-panel > * { position: relative; z-index: 1; }
+
+    /* toplogo-text.png: central hero branding (stacked vertical logo) */
+    .logo-display {
+      background: linear-gradient(160deg, rgba(0,120,212,0.14), rgba(80,230,255,0.06));
+      border: 1px solid rgba(0,183,255,0.20);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(0,120,212,0.12);
+    }
+
+    .logo-display img.logo-top {
+      height: 110px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .ai-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .ai-stat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 16px;
+      transition: all 0.2s;
+    }
+
+    .ai-stat:hover {
+      border-color: rgba(0,183,255,0.25);
+      background: rgba(0,120,212,0.08);
+    }
+
+    .ai-stat strong {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .ai-stat span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 64px 0; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--azure-bright);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.04rem;
+      max-width: 800px;
+      margin-bottom: 36px;
+      line-height: 1.72;
+    }
+
+    /* ── AI SERVICE CARDS ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .service-card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 64px rgba(0,0,0,0.50);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .card-azure::before { background: linear-gradient(90deg, var(--azure), var(--azure-bright)); }
+    .card-teal::before  { background: linear-gradient(90deg, var(--teal), #00e8b4); }
+    .card-purple::before { background: linear-gradient(90deg, var(--purple), #a87dff); }
+    .card-green::before { background: linear-gradient(90deg, var(--green), var(--teal)); }
+
+    .card-number {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .card-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    .icon-azure { background: rgba(0,120,212,0.20); }
+    .icon-teal  { background: rgba(0,212,170,0.18); }
+    .icon-purple { background: rgba(124,91,232,0.20); }
+    .icon-green { background: rgba(20,212,138,0.18); }
+
+    .service-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.72;
+      margin-bottom: 20px;
+    }
+
+    .service-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #b8c8e8;
+    }
+
+    .service-features li .check {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-top: 1px;
+    }
+
+    .check-azure { background: rgba(0,120,212,0.25); color: var(--azure-bright); }
+    .check-teal  { background: rgba(0,212,170,0.22); color: var(--teal); }
+    .check-purple { background: rgba(124,91,232,0.22); color: #b09aff; }
+    .check-green { background: rgba(20,212,138,0.22); color: var(--green); }
+
+    /* ── HOW WE WORK ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .how-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: all 0.2s;
+    }
+
+    .how-card:hover {
+      border-color: rgba(0,183,255,0.22);
+      background: rgba(0,120,212,0.06);
+    }
+
+    .how-num {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: rgba(80,230,255,0.20);
+      margin-bottom: 10px;
+    }
+
+    .how-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .how-card p {
+      color: var(--muted);
+      font-size: 0.91rem;
+      line-height: 1.68;
+    }
+
+    /* ── PLATFORM CAPABILITIES ── */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .platform-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 18px 16px;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #c0d0ee;
+      line-height: 1.4;
+      transition: all 0.2s;
+    }
+
+    .platform-item:hover {
+      background: rgba(0,120,212,0.10);
+      border-color: rgba(0,183,255,0.25);
+      color: var(--azure-light);
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: linear-gradient(135deg, rgba(0,120,212,0.18), rgba(0,212,170,0.10));
+      border: 1px solid rgba(0,183,255,0.20);
+      border-radius: 24px;
+      padding: 44px;
+      box-shadow: 0 0 60px rgba(0,120,212,0.10);
+    }
+
+    .callout strong {
+      display: block;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .callout p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.72;
+      max-width: 780px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 0 56px;
+      border-top: 1px solid rgba(0,120,212,0.15);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* textonly.png: footer — subtle text-only logo on dark bg */
+    .footer-brand img.logo-text {
+      height: 26px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.50;
+      filter: brightness(0) invert(1);
+      transition: opacity 0.2s;
+    }
+
+    .footer-brand:hover img { opacity: 0.85; }
+
+    .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--azure-light); }
+
+    .footer-copy {
+      color: rgba(143,163,196,0.55);
+      font-size: 0.84rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-panel { display: none; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .platform-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 680px) {
+      .services-grid,
+      .how-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .platform-grid { grid-template-columns: 1fr 1fr; }
+      .ai-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — logo.png as icon in glowing container + text beside it -->
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">
+          <img src="logos/logo.png" alt="" />
+        </div>
+        <div>
+          <div class="brand-name">SysInt Inc</div>
+          <div class="brand-tag">AI Platform</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#services">AI Services</a>
+        <a href="#platform">Platform</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-page-links">
+        <a href="index.html">Home</a>
+        <a href="enterprise-integration.html">Enterprise</a>
+        <a href="ai-services.html" class="active">AI Platform</a>
+      </div>
+      <a href="#contact" class="nav-cta">Start a Conversation</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <div class="eyebrow">
+              <span class="dot"></span>
+              AI Engineering &nbsp;•&nbsp; Enterprise Scale
+            </div>
+            <h1>
+              AI that works inside<br/>
+              <span class="gradient-text">your real business systems.</span>
+            </h1>
+            <p class="lead">
+              SysInt Inc delivers practical AI engineering — not isolated experiments.
+              We embed AI into the platforms, workflows, data flows, and operating models
+              your organization already depends on.
+            </p>
+            <p class="lead">
+              From agentic automation to inference platforms, from RAG architectures to intelligent applications —
+              we build AI that is governed, observable, and production-ready from day one.
+            </p>
+            <div class="hero-actions">
+              <a href="#services" class="btn btn-azure">Explore AI Services</a>
+              <a href="enterprise-integration.html" class="btn btn-outline">Enterprise Integration</a>
+            </div>
+          </div>
+
+          <!-- toplogo-text.png: hero featured logo (stacked vertical display) -->
+          <div class="hero-panel">
+            <div class="logo-display">
+              <img src="logos/toplogo-text.png" alt="SysInt Inc" class="logo-top" />
+            </div>
+            <div class="ai-stats">
+              <div class="ai-stat">
+                <strong style="color: var(--azure-light);">AI+</strong>
+                <span>Integration-native AI delivery</span>
+              </div>
+              <div class="ai-stat">
+                <strong style="color: var(--teal);">Governed</strong>
+                <span>Responsible, observable AI</span>
+              </div>
+              <div class="ai-stat">
+                <strong style="color: #b09aff);">Agentic</strong>
+                <span>Autonomous workflow automation</span>
+              </div>
+              <div class="ai-stat">
+                <strong style="color: var(--green);">Prod-Ready</strong>
+                <span>From prototype to production</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- AI SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-label">AI Services</div>
+        <h2 class="section-title">Four core AI capabilities for the enterprise.</h2>
+        <p class="section-sub">
+          Every service is designed with enterprise integration at its foundation — so AI can work with real
+          business context, not isolated datasets, and deliver measurable outcomes at scale.
+        </p>
+
+        <div class="services-grid">
+
+          <!-- 01 AI Integration -->
+          <article class="service-card card-azure">
+            <div class="card-number">01 — AI INTEGRATION</div>
+            <div class="card-icon-wrap icon-azure">🔌</div>
+            <h3>AI Integration</h3>
+            <p>
+              Connect enterprise data, APIs, SaaS platforms, cloud services, and business systems into
+              reliable AI-enabled workflows. We integrate structured data, documents, operational signals,
+              and knowledge sources so AI can work with real business context — not isolated datasets.
+            </p>
+            <ul class="service-features">
+              <li><span class="check check-azure">✓</span> Enterprise data connectivity for LLM and RAG pipelines</li>
+              <li><span class="check check-azure">✓</span> Knowledge graph and vector store integration</li>
+              <li><span class="check check-azure">✓</span> Real-time and batch data ingestion pipelines</li>
+              <li><span class="check check-azure">✓</span> Multi-source grounding for retrieval-augmented generation</li>
+              <li><span class="check check-azure">✓</span> API and webhook integration for AI-triggered workflows</li>
+            </ul>
+          </article>
+
+          <!-- 02 Agentic Automation -->
+          <article class="service-card card-teal">
+            <div class="card-number">02 — AGENTIC AUTOMATION</div>
+            <div class="card-icon-wrap icon-teal">🤖</div>
+            <h3>Agentic Automation</h3>
+            <p>
+              Design copilots, autonomous task agents, approval loops, and tool-using assistants that reduce
+              manual operating load. We build solutions that can retrieve information, call systems, trigger
+              workflows, and support people-in-the-loop decisions across enterprise processes.
+            </p>
+            <ul class="service-features">
+              <li><span class="check check-teal">✓</span> Enterprise copilots connected to internal knowledge</li>
+              <li><span class="check check-teal">✓</span> Multi-step task agents with tool-use and memory</li>
+              <li><span class="check check-teal">✓</span> Human-in-the-loop approval and escalation flows</li>
+              <li><span class="check check-teal">✓</span> Process automation agents integrated with ERP/CRM</li>
+              <li><span class="check check-teal">✓</span> Monitoring, logging, and tracing for agentic behavior</li>
+            </ul>
+          </article>
+
+          <!-- 03 Inference Platforms -->
+          <article class="service-card card-purple">
+            <div class="card-number">03 — INFERENCE PLATFORMS</div>
+            <div class="card-icon-wrap icon-purple">⚡</div>
+            <h3>Inference Platforms</h3>
+            <p>
+              Deploy models, prompts, evaluations, observability, routing, and guardrails for fast, measurable,
+              governed AI delivery. We help establish the platform capabilities needed to monitor, improve, secure,
+              and operationalize AI at scale across the enterprise.
+            </p>
+            <ul class="service-features">
+              <li><span class="check check-purple">✓</span> Azure OpenAI and model deployment architecture</li>
+              <li><span class="check check-purple">✓</span> Prompt engineering, versioning, and evaluation</li>
+              <li><span class="check check-purple">✓</span> Content filtering, guardrails, and safety controls</li>
+              <li><span class="check check-purple">✓</span> Cost management, rate limiting, and model routing</li>
+              <li><span class="check check-purple">✓</span> Observability: latency, quality, cost, and drift tracking</li>
+            </ul>
+          </article>
+
+          <!-- 04 Intelligent Apps -->
+          <article class="service-card card-green">
+            <div class="card-number">04 — INTELLIGENT APPS</div>
+            <div class="card-icon-wrap icon-green">🧠</div>
+            <h3>Intelligent Applications</h3>
+            <p>
+              Build customer portals, internal tools, analytics experiences, and multimodal products with AI
+              at the center. We create applications where intelligence is embedded into how users search, act,
+              decide, collaborate, and deliver outcomes — not bolted on as an afterthought.
+            </p>
+            <ul class="service-features">
+              <li><span class="check check-green">✓</span> AI-powered search and document intelligence interfaces</li>
+              <li><span class="check check-green">✓</span> Multimodal applications (text, image, document)</li>
+              <li><span class="check check-green">✓</span> Internal knowledge tools and decision-support apps</li>
+              <li><span class="check check-green">✓</span> Customer-facing AI experiences with brand guardrails</li>
+              <li><span class="check check-green">✓</span> Analytics and reporting with AI-generated insights</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PLATFORM CAPABILITIES -->
+    <section id="platform">
+      <div class="container">
+        <div class="section-label">Platform Capabilities</div>
+        <h2 class="section-title">The full stack of enterprise AI delivery.</h2>
+        <p class="section-sub">
+          We work across models, data, platforms, integrations, and applications — building AI systems
+          that are reliable, secure, and connected to the business.
+        </p>
+
+        <div class="platform-grid">
+          <div class="platform-item">Azure OpenAI Service</div>
+          <div class="platform-item">Azure AI Search</div>
+          <div class="platform-item">RAG Architecture</div>
+          <div class="platform-item">Prompt Engineering</div>
+          <div class="platform-item">LangChain / Semantic Kernel</div>
+          <div class="platform-item">Vector Databases</div>
+          <div class="platform-item">Fine-tuning & Evaluation</div>
+          <div class="platform-item">AI Orchestration</div>
+          <div class="platform-item">Content Safety</div>
+          <div class="platform-item">AI Observability</div>
+          <div class="platform-item">Model Routing</div>
+          <div class="platform-item">Knowledge Graphs</div>
+          <div class="platform-item">Document Intelligence</div>
+          <div class="platform-item">Azure ML</div>
+          <div class="platform-item">Responsible AI Controls</div>
+          <div class="platform-item">Multi-agent Frameworks</div>
+        </div>
+
+        <div class="callout" style="margin-top: 36px;">
+          <strong>AI built on an integration foundation</strong>
+          <p>
+            Unlike AI vendors working in isolation, SysInt Inc brings 20+ years of enterprise integration depth
+            to every AI engagement. We connect AI to the systems, data sources, approval workflows, and operating
+            models that your business depends on — so intelligence can operate reliably within real business processes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- APPROACH -->
+    <section id="approach">
+      <div class="container">
+        <div class="section-label">Our Approach</div>
+        <h2 class="section-title">Practical AI delivery, step by step.</h2>
+        <p class="section-sub">
+          We deliver AI with the same rigor as enterprise software — governed, tested, observed, and built to last.
+        </p>
+
+        <div class="how-grid">
+          <div class="how-card">
+            <div class="how-num">01</div>
+            <h4>Understand the Business Context</h4>
+            <p>
+              Every AI engagement starts with the business problem, the systems involved, the data available,
+              and the outcomes expected. We design for your organization — not a generic use case.
+            </p>
+          </div>
+          <div class="how-card">
+            <div class="how-num">02</div>
+            <h4>Connect Data and Systems</h4>
+            <p>
+              AI needs real business context. We integrate the data sources, APIs, documents, and operational
+              signals that AI needs to be genuinely useful — not just a demo.
+            </p>
+          </div>
+          <div class="how-card">
+            <div class="how-num">03</div>
+            <h4>Build with Governance from Day One</h4>
+            <p>
+              Content safety, observability, audit trails, cost controls, and responsible AI principles are
+              built into the architecture — not added at the end.
+            </p>
+          </div>
+          <div class="how-card">
+            <div class="how-num">04</div>
+            <h4>Evaluate and Iterate</h4>
+            <p>
+              We establish evaluation frameworks — quality metrics, latency targets, cost benchmarks — and
+              iterate continuously to improve AI performance with real usage data.
+            </p>
+          </div>
+          <div class="how-card">
+            <div class="how-num">05</div>
+            <h4>Operate at Production Scale</h4>
+            <p>
+              Deployment is not the end. We build for operationalization: monitoring dashboards, alerting,
+              model updates, and ongoing platform maintenance so AI keeps delivering value.
+            </p>
+          </div>
+          <div class="how-card">
+            <div class="how-num">06</div>
+            <h4>Extend and Scale</h4>
+            <p>
+              Once the foundation is proven, we help teams extend AI to new use cases, connect more systems,
+              and build the organizational capabilities to sustain AI delivery internally.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="section-label" style="display:block; text-align:center;">Get Started</div>
+          <h2>Ready to bring AI into your enterprise systems?</h2>
+          <p>
+            SysInt Inc partners with organizations that want AI that works — connected to real data,
+            integrated with real systems, and built for production. Let's talk about what that looks like for you.
+          </p>
+          <div class="contact-actions">
+            <a href="index.html" class="btn btn-outline">Back to Home</a>
+            <a href="enterprise-integration.html" class="btn btn-outline">Enterprise Integration</a>
+            <a href="mailto:contact@sysint.com" class="btn btn-azure">Contact SysInt Inc</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER — textonly.png (subtle inverted text-only logo on dark background) -->
+  <footer>
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-brand">
+        <img src="logos/textonly.png" alt="SysInt Inc" class="logo-text" />
+      </a>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="enterprise-integration.html">Enterprise Integration</a>
+        <a href="ai-services.html">AI Platform</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">© 2025 SysInt Inc. Integration • Intelligence • Inference</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SysInt Inc | Integration • Intelligence • Inference</title>
+  <meta name="description" content="SysInt Inc helps organizations modernize integration, connect enterprise systems, and operationalize AI through practical engineering." />
+  <link rel="icon" type="image/png" href="logos/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060814;
+      --bg2: #0a1020;
+      --panel: rgba(255,255,255,0.055);
+      --panel2: rgba(255,255,255,0.028);
+      --text: #eef3ff;
+      --muted: #aeb8d0;
+      --line: rgba(255,255,255,0.10);
+      --cyan: #18c8ff;
+      --blue: #1f7cff;
+      --violet: #8d1cff;
+      --magenta: #ff2b8c;
+      --orange: #ff7a00;
+      --amber: #ffb400;
+      --shadow: 0 20px 60px rgba(0,0,0,0.40);
+      --radius: 22px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 10% 8%, rgba(24,200,255,0.13), transparent 30%),
+        radial-gradient(ellipse at 88% 15%, rgba(141,28,255,0.15), transparent 32%),
+        radial-gradient(ellipse at 85% 92%, rgba(255,122,0,0.11), transparent 28%),
+        radial-gradient(ellipse at 12% 90%, rgba(31,124,255,0.09), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px) saturate(160%);
+      background: rgba(6,8,20,0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 20px;
+    }
+
+    /* sidelogo-text.png: nav brand (horizontal icon+text layout) */
+    .brand img.logo-side {
+      height: 78px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-page-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-page-links a {
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .nav-page-links a:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .nav-cta {
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 22px rgba(141,28,255,0.28);
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan) 0%, #5a7dff 40%, var(--violet) 70%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .lead {
+      font-size: 0.97rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.72;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 6px 22px rgba(141,28,255,0.28);
+    }
+
+    .btn-primary:hover { box-shadow: 0 10px 32px rgba(141,28,255,0.40); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.22);
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn-outline:hover { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.06); }
+
+
+    /* ── SECTIONS ── */
+    section { padding: 56px 0; scroll-margin-top: 106px; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.97rem;
+      margin-bottom: 36px;
+      line-height: 1.72;
+    }
+
+    /* ── TWO PILLAR LAYOUT ── */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .pillar {
+      padding: 34px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .pillar-integration::before {
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+    }
+
+    .pillar-ai::before {
+      background: linear-gradient(90deg, var(--violet), var(--magenta), var(--orange));
+    }
+
+    .pillar-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+
+    .pillar h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .pillar p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.72;
+      margin-bottom: 20px;
+    }
+
+    .pillar-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pillar-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.93rem;
+      color: #c8d4ee;
+    }
+
+    .pillar-features li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .pillar-integration .pillar-features li::before { background: var(--cyan); }
+    .pillar-ai .pillar-features li::before { background: var(--violet); }
+
+    .pillar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(255,255,255,0.22);
+      background: transparent;
+      color: #fff;
+      transition: all 0.2s;
+    }
+
+    .pillar-link:hover {
+      border-color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--orange));
+    }
+
+    .service-num {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .service-card h3 {
+      font-size: 1.28rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      padding: 36px;
+      border-radius: 24px;
+      background: linear-gradient(90deg, rgba(24,200,255,0.08), rgba(141,28,255,0.10), rgba(255,122,0,0.08));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .callout strong {
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .callout p {
+      color: #d0d9f0;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ── FOCUS GRID ── */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .focus-item {
+      padding: 18px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #d8e2f5;
+      line-height: 1.4;
+      transition: all 0.2s;
+    }
+
+    .focus-item:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(24,200,255,0.22);
+      color: #fff;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-box h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -0.03em; margin-bottom: 14px; }
+    .contact-box p { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 0 56px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* textonly.png: footer branding (text-only logo) */
+    .footer-brand img.logo-text {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.65;
+    }
+
+    .footer-brand:hover img { opacity: 1; }
+
+    .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-nav a:hover { color: #fff; }
+
+    .footer-copy {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .pillar-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .focus-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links { display: none; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+
+      .focus-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — uses sidelogo-text.png (horizontal icon+text nav brand) -->
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="logos/sidelogo-text.png" alt="SysInt Inc" class="logo-side" />
+      </a>
+      <nav class="nav-links">
+        <a href="#integration">Integration</a>
+        <a href="#ai">AI Services</a>
+        <a href="ai-agent-store.html">AI Agent Store</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- AI AGENT STORE -->
+    <style>
+      .store-section { padding: 64px 0 56px; }
+
+      .store-headline-row {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 32px;
+        flex-wrap: wrap;
+      }
+
+      .store-stats {
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+      }
+
+      .store-stat { text-align: center; }
+
+      .store-stat-num {
+        font-size: 1.9rem;
+        font-weight: 900;
+        line-height: 1;
+        background: linear-gradient(90deg, var(--cyan), var(--violet));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .store-stat-label {
+        font-size: 0.74rem;
+        color: var(--muted);
+        font-weight: 600;
+        margin-top: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        line-height: 1.4;
+      }
+
+      .biz-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .biz-card {
+        padding: 22px 20px;
+        border-radius: 18px;
+        background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+        border: 1px solid rgba(255,255,255,0.09);
+        transition: all 0.22s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .biz-card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--cyan), var(--violet));
+        opacity: 0;
+        transition: opacity 0.22s;
+      }
+
+      .biz-card:hover {
+        background: linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
+        border-color: rgba(24,200,255,0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      }
+
+      .biz-card:hover::before { opacity: 1; }
+
+      .biz-icon { font-size: 1.9rem; margin-bottom: 10px; }
+
+      .biz-card h4 {
+        font-size: 0.96rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: #eef3ff;
+      }
+
+      .biz-card p {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .store-cta-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 28px 32px;
+        border-radius: 20px;
+        background: linear-gradient(90deg, rgba(24,200,255,0.07), rgba(141,28,255,0.10), rgba(255,122,0,0.07));
+        border: 1px solid rgba(255,255,255,0.10);
+        flex-wrap: wrap;
+      }
+
+      .store-cta-text strong { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+      .store-cta-text p { font-size: 0.9rem; color: var(--muted); }
+
+      @media (max-width: 1024px) {
+        .biz-grid { grid-template-columns: repeat(2, 1fr); }
+        .store-headline-row { flex-direction: column; align-items: flex-start; }
+      }
+
+      @media (max-width: 680px) {
+        .store-cta-row { flex-direction: column; align-items: flex-start; }
+        .store-stats { gap: 20px; }
+      }
+    </style>
+
+    <section class="store-section" id="agent-store">
+      <div class="container">
+
+        <div class="store-headline-row">
+          <div>
+            <span class="section-label">AI Agent Store — Now Open</span>
+            <h2 class="section-title" style="margin-bottom:0">AI Agents purpose-built for <span class="gradient-text">local business.</span></h2>
+          </div>
+          <div class="store-stats">
+            <div class="store-stat">
+              <div class="store-stat-num">80%</div>
+              <div class="store-stat-label">of small businesses<br>adopting chatbots</div>
+            </div>
+            <div class="store-stat">
+              <div class="store-stat-num">20+</div>
+              <div class="store-stat-label">hours saved<br>per week</div>
+            </div>
+            <div class="store-stat">
+              <div class="store-stat-num">24/7</div>
+              <div class="store-stat-label">customer coverage<br>no staff needed</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="section-sub" style="margin-bottom:28px">
+          SysInt's AI Agent Store gives local businesses a ready-to-deploy chatbot that handles bookings,
+          answers questions, captures leads, and serves customers around the clock — no technical setup required.
+          Try the live demo using the chat button below.
+        </p>
+
+        <div class="biz-grid">
+          <div class="biz-card">
+            <div class="biz-icon">🍽️</div>
+            <h4>Restaurants</h4>
+            <p>Table reservations, menu Q&amp;A, hours &amp; location, order FAQs — 24/7</p>
+          </div>
+          <div class="biz-card">
+            <div class="biz-icon">💇</div>
+            <h4>Salons &amp; Spas</h4>
+            <p>Appointment booking, service pricing, reminders to cut no-shows</p>
+          </div>
+          <div class="biz-card">
+            <div class="biz-icon">🏥</div>
+            <h4>Medical Clinics</h4>
+            <p>Patient scheduling, after-hours intake, appointment reminders</p>
+          </div>
+          <div class="biz-card">
+            <div class="biz-icon">🏠</div>
+            <h4>Real Estate</h4>
+            <p>Property inquiries, viewing bookings, lead capture &amp; qualification</p>
+          </div>
+          <div class="biz-card">
+            <div class="biz-icon">🛍️</div>
+            <h4>Retail Stores</h4>
+            <p>Product Q&amp;A, stock availability, recommendations, after-hours support</p>
+          </div>
+          <div class="biz-card">
+            <div class="biz-icon">🔧</div>
+            <h4>Home Services</h4>
+            <p>Quote requests, job booking, after-hours lead capture — plumbers, HVAC &amp; more</p>
+          </div>
+          <div class="biz-card">
+            <div class="biz-icon">⚖️</div>
+            <h4>Legal &amp; Professional</h4>
+            <p>After-hours client intake, consultation booking, lead qualification</p>
+          </div>
+          <div class="biz-card">
+            <div class="biz-icon">🎓</div>
+            <h4>Education &amp; Tutoring</h4>
+            <p>Enrollment queries, class scheduling, course FAQs, payment info</p>
+          </div>
+        </div>
+
+        <div class="store-cta-row">
+          <div class="store-cta-text">
+            <strong>Ready to deploy an AI agent for your business?</strong>
+            <p>We'll match the right agent to your industry and get you live quickly — no tech team needed.</p>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="ai-agent-store.html" class="btn btn-primary">Get Your AI Agent</a>
+            <button class="btn btn-outline" onclick="toggleChat()" style="border:none;cursor:pointer;font-family:inherit">Try Live Demo →</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Where enterprise systems meet <span class="gradient-text">intelligent automation.</span></h1>
+          <p class="lead">
+            SysInt Inc brings together 20+ years of enterprise integration depth and modern AI engineering.
+            We connect business-critical systems, modernize legacy platforms, and embed intelligence directly
+            into the workflows your organization already depends on.
+          </p>
+          <p class="lead">
+            From BizTalk migration to Azure Integration Services, from agentic workflows to inference platforms —
+            we deliver practical, production-ready solutions built for the real world.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">Built at the intersection of <span class="gradient-text">integration and intelligence.</span></h2>
+        <p class="section-sub">
+          We understand both worlds: the complexity of long-running enterprise systems and the speed of modern AI.
+          That means we do not treat AI as an isolated experiment — we integrate it into the platforms,
+          approvals, data flows, and operating models that businesses already depend on.
+        </p>
+        <div class="pillar-grid">
+          <div class="pillar">
+            <p>
+              SysInt Inc partners with organizations that need real transformation — not theoretical blueprints.
+              With deep roots in middleware, APIs, cloud workflows, and enterprise architecture, we build solutions
+              that are practical, scalable, and aligned to measurable business outcomes.
+            </p>
+          </div>
+          <div class="pillar">
+            <p>
+              Our strength is connecting the old and the new. We translate proven integration patterns, business
+              flows, and operational controls into cloud-ready, AI-enabled architectures that support growth
+              and sustain organizational confidence through change.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- TWO PILLARS: INTEGRATION + AI -->
+    <section id="integration">
+      <div class="container">
+        <h2 class="section-title">Enterprise Integration and AI Engineering — <span class="gradient-text">equally at the core.</span></h2>
+        <p class="section-sub">
+          SysInt Inc was built on the foundation of enterprise integration and has grown to lead in applied AI engineering.
+          Both disciplines are first-class capabilities — not one plus an add-on.
+        </p>
+
+        <div class="pillar-grid">
+          <!-- INTEGRATION PILLAR -->
+          <div class="pillar pillar-integration">
+            <div class="pillar-icon">🔗</div>
+            <h3>Enterprise Integration</h3>
+            <p>
+              Connecting ERP, CRM, SCM, legacy systems, SaaS applications, APIs, messaging platforms, and cloud services
+              through robust middleware and modern integration layers. With 20+ years of BizTalk expertise and deep
+              Azure Integration Services capability, we build the digital backbone that enterprises depend on.
+            </p>
+            <ul class="pillar-features">
+              <li>Azure Integration Services — Logic Apps, Service Bus, API Management, Event Grid</li>
+              <li>BizTalk Server migration assessment, planning, and execution</li>
+              <li>API strategy, design, and middleware modernization</li>
+              <li>Event-driven architecture and messaging patterns</li>
+              <li>Partner ecosystem and EDI integration</li>
+              <li>Integration governance, monitoring, and observability</li>
+            </ul>
+            <a href="enterprise-integration.html" class="pillar-link">Explore Integration Services →</a>
+          </div>
+
+          <!-- AI PILLAR -->
+          <div class="pillar pillar-ai">
+            <div class="pillar-icon">🤖</div>
+            <h3>AI Engineering</h3>
+            <p>
+              Practical AI services designed to connect enterprise data, automate work, deploy inference responsibly,
+              and build intelligent products that deliver measurable value. We bring AI into business operations —
+              governed, observable, and production-ready.
+            </p>
+            <ul class="pillar-features">
+              <li>AI Integration — connecting data, APIs, and systems into AI workflows</li>
+              <li>Agentic automation — copilots, task agents, approval loops</li>
+              <li>Inference platforms — deployment, routing, guardrails, observability</li>
+              <li>Intelligent applications — portals, tools, multimodal products</li>
+              <li>Enterprise knowledge integration and RAG architectures</li>
+              <li>AI governance, evaluation, and responsible deployment</li>
+            </ul>
+            <a href="ai-services.html" class="pillar-link">Explore AI Services →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SERVICES DETAIL -->
+    <section id="ai">
+      <div class="container">
+        <h2 class="section-title">What we deliver across <span class="gradient-text">both pillars.</span></h2>
+        <p class="section-sub">
+          Every engagement combines integration expertise with AI capability — because modern enterprise transformation
+          requires both working together.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-num">01 — INTEGRATION</div>
+            <h3>Azure Integration Services</h3>
+            <p>
+              Design and build cloud-native integration using Logic Apps, Service Bus, API Management, Event Grid,
+              and Data Factory. We architect integrations that are observable, maintainable, and aligned to
+              enterprise security and compliance requirements.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-num">02 — INTEGRATION</div>
+            <h3>BizTalk to Azure Migration</h3>
+            <p>
+              Assess existing BizTalk estates, preserve critical business knowledge, reduce migration risk, and
+              design modern Azure-based solutions that improve agility, observability, and long-term scalability.
+              We translate proven patterns — not just replace technology.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-num">03 — AI</div>
+            <h3>AI Integration & Agentic Automation</h3>
+            <p>
+              Connect enterprise data, APIs, SaaS platforms, and knowledge systems into AI-enabled workflows.
+              Build copilots, autonomous task agents, approval loops, and tool-using assistants that reduce manual
+              operating load and support people-in-the-loop decisions.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-num">04 — AI</div>
+            <h3>Inference Platforms & Intelligent Apps</h3>
+            <p>
+              Deploy models, prompts, evaluations, observability, routing, and guardrails for governed AI delivery.
+              Build customer portals, internal tools, and multimodal products with AI at the center — from
+              prototype to production with measurable outcomes.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- VALUE / FOCUS AREAS -->
+    <section id="value">
+      <div class="container">
+        <h2 class="section-title">Expertise across the <span class="gradient-text">enterprise technology landscape.</span></h2>
+        <p class="section-sub">
+          We work at the intersection of enterprise systems, cloud platforms, AI delivery, and operational transformation.
+        </p>
+
+        <div class="focus-grid">
+          <div class="focus-item">Azure Integration Services</div>
+          <div class="focus-item">API & Middleware Modernization</div>
+          <div class="focus-item">BizTalk to Azure Migration</div>
+          <div class="focus-item">Event-Driven Architecture</div>
+          <div class="focus-item">AI-Enabled Workflows</div>
+          <div class="focus-item">Agentic Automation</div>
+          <div class="focus-item">Inference Delivery Platforms</div>
+          <div class="focus-item">Enterprise Knowledge Integration</div>
+          <div class="focus-item">Partner & EDI Integration</div>
+          <div class="focus-item">Integration Governance</div>
+          <div class="focus-item">Intelligent Applications</div>
+          <div class="focus-item">Cloud Modernization</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Ready to modernize integration and <span class="gradient-text">operationalize AI?</span></h2>
+          <p>
+            SysInt Inc partners with teams that want practical transformation — modern integration architecture,
+            cloud-ready platforms, and AI solutions that create measurable business value.
+          </p>
+          <div class="contact-actions">
+            <a href="enterprise-integration.html" class="btn btn-primary">Enterprise Integration</a>
+            <a href="ai-services.html" class="btn btn-primary">AI Platform Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER — uses textonly.png (text-only logo for subtle footer branding) -->
+  <footer>
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-brand">
+        <img src="logos/textonly.png" alt="SysInt Inc" class="logo-text" />
+      </a>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="enterprise-integration.html">Enterprise Integration</a>
+        <a href="ai-services.html">AI Services</a>
+        <a href="#contact">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+      <p class="footer-copy">© 2025 SysInt Inc. Integration • Intelligence • Inference</p>
+    </div>
+  </footer>
+
+
+  <link rel="stylesheet" href="chat-widget.css" />
+  <script src="chat-widget.js"></script>
+
+</body>
+</html>

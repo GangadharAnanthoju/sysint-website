@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3 Ways AI Can Save Your Local Business 5 Hours a Week — SysInt Inc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f7;
+      color: #12203a;
+      line-height: 1.6;
+    }
+
+    /* ── SCREEN WRAPPER ── */
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 24px;
+      gap: 20px;
+    }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #18c8ff, #8d1cff);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(141,28,255,0.30);
+      transition: opacity 0.2s;
+    }
+
+    .print-btn:hover { opacity: 0.88; }
+
+    /* ── PAPER ── */
+    .paper {
+      width: 794px;
+      min-height: 1123px;
+      background: #fff;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── HEADER ── */
+    .paper-header {
+      background: linear-gradient(135deg, #0d1528 0%, #0a1020 60%, #110820 100%);
+      padding: 22px 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .paper-header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #18c8ff, #8d1cff, #ff7a00);
+    }
+
+    .paper-header::after {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 18px 18px;
+      mask-image: radial-gradient(ellipse at 80% 20%, black 30%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 80% 20%, black 30%, transparent 70%);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .header-logo img {
+      height: 66px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .header-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    .header-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #18c8ff;
+      margin-bottom: 6px;
+    }
+
+    .header-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: #fff;
+      max-width: 560px;
+    }
+
+    .header-title span {
+      background: linear-gradient(90deg, #18c8ff, #8d1cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-sub {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: rgba(174,184,208,0.85);
+      max-width: 500px;
+      line-height: 1.55;
+    }
+
+    /* ── BODY ── */
+    .paper-body {
+      flex: 1;
+      padding: 20px 40px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* ── WAY CARDS ── */
+    .way {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0 18px;
+      align-items: start;
+    }
+
+    .way-num-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .way-num {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .way:nth-child(1) .way-num { background: linear-gradient(135deg, #18c8ff, #1f7cff); box-shadow: 0 6px 18px rgba(24,200,255,0.30); }
+    .way:nth-child(2) .way-num { background: linear-gradient(135deg, #8d1cff, #ff2b8c); box-shadow: 0 6px 18px rgba(141,28,255,0.30); }
+    .way:nth-child(3) .way-num { background: linear-gradient(135deg, #ff7a00, #ffb400); box-shadow: 0 6px 18px rgba(255,122,0,0.30); }
+
+    .way-connector {
+      width: 2px;
+      flex: 1;
+      min-height: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+      margin-top: 6px;
+    }
+
+    .way-content {
+      padding-top: 4px;
+    }
+
+    .way-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8d9ab5;
+      margin-bottom: 5px;
+    }
+
+    .way:nth-child(1) .way-label { color: #18c8ff; }
+    .way:nth-child(2) .way-label { color: #8d1cff; }
+    .way:nth-child(3) .way-label { color: #ff7a00; }
+
+    .way-title {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: #12203a;
+      margin-bottom: 5px;
+      letter-spacing: -0.01em;
+    }
+
+    .way-desc {
+      font-size: 0.82rem;
+      color: #4a5878;
+      line-height: 1.58;
+      margin-bottom: 8px;
+    }
+
+    .way-examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .example-tag {
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: 1px solid;
+    }
+
+    .way:nth-child(1) .example-tag { background: rgba(24,200,255,0.08); border-color: rgba(24,200,255,0.25); color: #0d7fa8; }
+    .way:nth-child(2) .example-tag { background: rgba(141,28,255,0.07); border-color: rgba(141,28,255,0.22); color: #6a14c2; }
+    .way:nth-child(3) .example-tag { background: rgba(255,122,0,0.08); border-color: rgba(255,122,0,0.25); color: #b85500; }
+
+    /* ── TIME SAVED BANNER ── */
+    .time-banner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #e4e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e4e8f0;
+    }
+
+    .time-item {
+      background: #f8f9fc;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .time-num {
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .time-item:nth-child(1) .time-num { color: #18c8ff; }
+    .time-item:nth-child(2) .time-num { color: #8d1cff; }
+    .time-item:nth-child(3) .time-num { color: #ff7a00; }
+
+    .time-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #8d9ab5;
+      line-height: 1.4;
+    }
+
+    /* ── FOOTER ── */
+    .paper-footer {
+      margin-top: auto;
+      background: #f8f9fc;
+      border-top: 2px solid #e8ecf4;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-contact {}
+
+    .footer-name {
+      font-size: 0.97rem;
+      font-weight: 800;
+      color: #12203a;
+      margin-bottom: 2px;
+    }
+
+    .footer-role {
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #8d9ab5;
+      margin-bottom: 8px;
+    }
+
+    .footer-details {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .footer-detail {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      color: #4a5878;
+      font-weight: 500;
+    }
+
+    .footer-detail svg {
+      width: 13px; height: 13px;
+      fill: #8d1cff;
+      flex-shrink: 0;
+    }
+
+    .footer-cta {
+      text-align: right;
+    }
+
+    .footer-cta p {
+      font-size: 0.78rem;
+      color: #8d9ab5;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .footer-cta-btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #18c8ff, #8d1cff, #ff7a00);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.84rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .footer-divider {
+      width: 1px;
+      height: 60px;
+      background: #dde2ed;
+    }
+
+    /* ── CHECKLIST ── */
+    .checklist-box {
+      background: #f4f6fb;
+      border: 1px solid #dde3f0;
+      border-left: 4px solid #8d1cff;
+      border-radius: 14px;
+      padding: 18px 22px;
+    }
+
+    .checklist-box h4 {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8d1cff;
+      margin-bottom: 10px;
+    }
+
+    .checklist-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px 24px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #2d3a56;
+      line-height: 1.45;
+    }
+
+    .checklist-item::before {
+      content: "✓";
+      font-weight: 900;
+      font-size: 0.78rem;
+      color: #8d1cff;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .checklist-note {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #4a5878;
+      font-style: italic;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .tl-item {
+      background: #f4f6fb;
+      border: 1px solid #dde3f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      position: relative;
+    }
+
+    .tl-week {
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .tl-item:nth-child(1) .tl-week { color: #18c8ff; }
+    .tl-item:nth-child(2) .tl-week { color: #8d1cff; }
+    .tl-item:nth-child(3) .tl-week { color: #ff7a00; }
+
+    .tl-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #12203a;
+      margin-bottom: 4px;
+    }
+
+    .tl-desc {
+      font-size: 0.78rem;
+      color: #4a5878;
+      line-height: 1.5;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: #e4e8f0;
+    }
+
+    .mini-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8d9ab5;
+      margin-bottom: 8px;
+    }
+
+    .bottom-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .bottom-left, .bottom-right { display: flex; flex-direction: column; gap: 0; }
+
+    /* ── PRINT ── */
+    @media print {
+      html, body { background: #fff; font-size: 88%; }
+      .page-wrap { padding: 0; background: #fff; }
+      .print-btn { display: none !important; }
+
+      .paper {
+        width: 100%;
+        min-height: auto !important;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-inside: avoid;
+      }
+
+      .paper-body {
+        flex: 0 0 auto !important;
+        padding: 16px 36px 12px !important;
+        gap: 10px !important;
+      }
+
+      .paper-header {
+        padding: 16px 36px 14px !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .header-top { margin-bottom: 10px !important; }
+
+      .paper-footer {
+        padding: 12px 36px !important;
+      }
+
+      .way-num {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .footer-cta-btn {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .time-banner {
+        display: flex !important;
+        flex-direction: row !important;
+      }
+
+      .time-item {
+        flex: 1;
+        white-space: nowrap;
+        padding: 10px 12px !important;
+      }
+
+      .time-label {
+        font-size: 0.68rem !important;
+        white-space: nowrap;
+      }
+
+      .paper-footer {
+        flex-direction: row !important;
+        align-items: center !important;
+        padding: 10px 36px !important;
+        gap: 16px !important;
+      }
+
+      .footer-name {
+        font-size: 0.82rem !important;
+        margin-bottom: 1px !important;
+      }
+
+      .footer-role {
+        font-size: 0.66rem !important;
+        margin-bottom: 4px !important;
+      }
+
+      .footer-details {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px 16px !important;
+      }
+
+      .footer-detail {
+        font-size: 0.72rem !important;
+      }
+
+      .footer-cta p {
+        font-size: 0.7rem !important;
+        margin-bottom: 6px !important;
+      }
+
+      .footer-cta-btn {
+        padding: 7px 16px !important;
+        font-size: 0.76rem !important;
+      }
+
+      .footer-divider {
+        height: 48px !important;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .paper { width: 100%; min-height: auto; }
+      .paper-header, .paper-body, .paper-footer { padding-left: 28px; padding-right: 28px; }
+      .header-title { font-size: 1.35rem; }
+      .time-banner { grid-template-columns: 1fr; }
+      .paper-footer { flex-direction: column; align-items: flex-start; }
+      .footer-cta { text-align: left; }
+      .footer-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <div class="paper">
+
+    <!-- HEADER -->
+    <div class="paper-header">
+      <div class="header-top">
+        <div class="header-logo">
+          <img src="logos/sidelogo-text.png" alt="SysInt Inc" />
+        </div>
+        <div class="header-badge">Free Guide<br>For Local Business Owners</div>
+      </div>
+      <div class="header-eyebrow">AI for Local Business</div>
+      <h1 class="header-title">3 Ways AI Can Save Your<br>Local Business <span>5 Hours a Week</span></h1>
+      <p class="header-sub">No tech background needed. These are practical, low-cost changes that local businesses are making right now — and seeing real results within the first month.</p>
+    </div>
+
+    <!-- BODY -->
+    <div class="paper-body">
+
+      <!-- WAY 1 -->
+      <div class="way">
+        <div class="way-num-col">
+          <div class="way-num">1</div>
+          <div class="way-connector"></div>
+        </div>
+        <div class="way-content">
+          <div class="way-label">Save ~2 hrs/week</div>
+          <div class="way-title">Stop Answering the Same Questions Over and Over</div>
+          <p class="way-desc">
+            Most local businesses spend hours each week answering the same questions — hours, pricing, parking, policies.
+            An AI chatbot on your website handles all of these instantly, 24/7, so customers get answers in seconds and you get your time back.
+          </p>
+          <div class="way-examples">
+            <span class="example-tag">Hours &amp; Location</span>
+            <span class="example-tag">Pricing Questions</span>
+            <span class="example-tag">Service FAQs</span>
+            <span class="example-tag">Returns &amp; Policies</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WAY 2 -->
+      <div class="way">
+        <div class="way-num-col">
+          <div class="way-num">2</div>
+          <div class="way-connector"></div>
+        </div>
+        <div class="way-content">
+          <div class="way-label">Save ~2 hrs/week</div>
+          <div class="way-title">Let AI Book Appointments While You Sleep</div>
+          <p class="way-desc">
+            Phone tag wastes hours — back-and-forth to confirm a haircut, a consultation, or a service call.
+            An AI booking agent connects to your calendar so customers self-schedule any time, and automatic reminders cut no-shows by up to 60%.
+          </p>
+          <div class="way-examples">
+            <span class="example-tag">Salons &amp; Spas</span>
+            <span class="example-tag">Clinics</span>
+            <span class="example-tag">Home Services</span>
+            <span class="example-tag">Consultants</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WAY 3 -->
+      <div class="way">
+        <div class="way-num-col">
+          <div class="way-num">3</div>
+        </div>
+        <div class="way-content">
+          <div class="way-label">Save ~1 hr/week + revenue gain</div>
+          <div class="way-title">Capture Every Lead — Even After You Close</div>
+          <p class="way-desc">
+            Most inquiries happen after hours — and without an AI agent, those leads go to a competitor who responds first.
+            An AI agent greets every visitor, captures their details, and sends them to your inbox. Real estate agents report 2.5× more bookings; home services cut lead costs by 70%.
+          </p>
+          <div class="way-examples">
+            <span class="example-tag">After-Hours Inquiries</span>
+            <span class="example-tag">Lead Qualification</span>
+            <span class="example-tag">Quote Requests</span>
+            <span class="example-tag">CRM Sync</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- CHECKLIST -->
+      <div class="checklist-box">
+        <h4>Is AI right for your business? Check what applies:</h4>
+        <div class="checklist-items">
+          <div class="checklist-item">You answer the same questions 5+ times a week</div>
+          <div class="checklist-item">You miss calls or inquiries after hours</div>
+          <div class="checklist-item">Scheduling takes 30+ minutes of your day</div>
+          <div class="checklist-item">Leads go cold before you get a chance to respond</div>
+          <div class="checklist-item">You want to grow without hiring more staff</div>
+          <div class="checklist-item">Competitors are responding to customers faster than you</div>
+        </div>
+        <p class="checklist-note">If you checked even one — an AI agent can start saving you time this week.</p>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- TIME SAVED SUMMARY -->
+      <div class="time-banner">
+        <div class="time-item">
+          <div class="time-num">5 hrs</div>
+          <div class="time-label">Saved every week on average</div>
+        </div>
+        <div class="time-item">
+          <div class="time-num">24/7</div>
+          <div class="time-label">Coverage, no extra staff</div>
+        </div>
+        <div class="time-item">
+          <div class="time-num">48 hrs</div>
+          <div class="time-label">Typical time to go live</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="paper-footer">
+      <div class="footer-contact">
+        <div class="footer-name">Ganga Ananthoju</div>
+        <div class="footer-role">Founder &amp; AI Engineer — SysInt Inc</div>
+        <div class="footer-details">
+          <div class="footer-detail">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            440-364-6078
+          </div>
+          <div class="footer-detail">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            www.sysintinc.com
+          </div>
+          <div class="footer-detail">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            gangadhar.ananthoju@sysintinc.com
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-cta">
+        <p>Want to see this working for your business?</p>
+        <a href="https://www.sysintinc.com" class="footer-cta-btn">Book a Free Demo →</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
