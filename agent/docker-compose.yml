@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   agent:
     build: .
@@ -8,7 +6,5 @@ services:
     env_file:
       - .env
     volumes:
+      - ./src:/app/src
       - ./data:/app/data
-      - ./prompts:/app/prompts
-      - ./config:/app/config
-    restart: unless-stopped

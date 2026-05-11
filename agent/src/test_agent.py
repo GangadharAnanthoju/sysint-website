@@ -1,23 +1,20 @@
-import asyncio
-from src.sysint_agent import SysIntAgent
+from sysint_agent import ask
 
 TEST_MESSAGES = [
-    "Hi, what are your hours?",
-    "How much does a haircut cost?",
-    "Can I book an appointment for Saturday?",
-    "Do you offer bridal packages?",
-    "What's your cancellation policy?",
+    "Hi, what does SysInt do?",
+    "Do you help with BizTalk migration?",
+    "What Azure services do you work with?",
+    "I need an AI agent for my restaurant — can you help?",
+    "How long does it take to go live?",
+    "How do I get in touch with the team?",
 ]
 
-
-async def main():
-    agent = SysIntAgent()
+if __name__ == "__main__":
     print("SysInt Agent — Local Test\n" + "=" * 40)
+    history = []
     for msg in TEST_MESSAGES:
         print(f"\nUser: {msg}")
-        reply = await agent.respond(msg)
-        print(f"Aria: {reply}")
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
+        reply = ask(msg, history)
+        print(f"Agent: {reply}")
+        history.append({"role": "user", "content": msg})
+        history.append({"role": "assistant", "content": reply})
