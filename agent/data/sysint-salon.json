@@ -68,6 +68,22 @@
     "answer": "Yes. Reminders go out automatically before each appointment — you set the timing and we handle the rest. No chasing clients, no manual texts."
   },
   {
+    "question": "Is a phone number required to book an appointment?",
+    "answer": "No — providing a phone number is optional. Clients who want text reminders enter their number during booking and give their permission. Clients who prefer not to share their number still get email confirmations."
+  },
+  {
+    "question": "Can clients opt out of text reminders?",
+    "answer": "Yes. Clients can opt out of SMS reminders at any time. We respect their preference and they will still receive email confirmations for all appointments."
+  },
+  {
+    "question": "Do text reminders work for clients outside the US?",
+    "answer": "Text reminders work reliably for US numbers. Some carriers outside the US may block or delay SMS messages, so we recommend confirming with international clients that they received their reminder."
+  },
+  {
+    "question": "Can I turn text reminders on or off for specific services?",
+    "answer": "Yes. You can enable or disable SMS reminders per service type — for example, turn them on for color appointments but off for quick trims. Just let us know your preference and we will set it up accordingly."
+  },
+  {
     "question": "Can I choose my own colors and branding?",
     "answer": "Yes. We offer multiple themes and customize the colors, logo, and content to match your salon's brand."
   },
