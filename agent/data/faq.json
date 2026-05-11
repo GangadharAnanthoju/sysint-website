@@ -33,6 +33,58 @@
       "answer": "No — a domain is optional. Without one, your site runs on yourshopname.sysintinc.com (like elite.sysintinc.com) at no extra cost. If you want a custom domain like yoursalon.com, we can set it up for an additional fee depending on availability, plus an annual renewal charge — typically $15–$50/year."
     },
     {
+      "question": "What does a local business AI agent actually do?",
+      "answer": "It answers customer questions 24/7 (hours, pricing, services, location), handles appointment booking, captures leads after hours, sends reminders, and qualifies inquiries — all automatically, without any staff involvement."
+    },
+    {
+      "question": "Do I need any technical knowledge to use an AI agent?",
+      "answer": "None at all. We handle everything — setup, hosting, customization, and ongoing support. You just share your business details and we take care of the rest."
+    },
+    {
+      "question": "Will the AI agent sound like my business?",
+      "answer": "Yes. We train the agent on your specific services, prices, hours, staff, and policies so it responds in your brand's voice. It never makes up answers — if it doesn't know something, it directs customers to call you."
+    },
+    {
+      "question": "What happens after business hours?",
+      "answer": "The agent stays on 24/7. It answers questions, captures lead details, and schedules appointments even when you're closed — so you never miss an inquiry again."
+    },
+    {
+      "question": "Can the AI agent book appointments?",
+      "answer": "Yes. The agent can connect to your existing booking system or calendar and let customers self-schedule any time of day. Automatic reminders are sent before appointments to cut no-shows by up to 60%."
+    },
+    {
+      "question": "Which local business types benefit most from an AI agent?",
+      "answer": "Any business that handles repetitive customer inquiries or appointments — salons, restaurants, clinics, real estate agents, retailers, plumbers, lawyers, tutors. If your phone rings with the same questions every week, an AI agent will save you hours."
+    },
+    {
+      "question": "Is the AI agent available on my website and phone?",
+      "answer": "Yes. The agent can be embedded as a chat widget on your website, connected to WhatsApp, or deployed as a voice assistant for phone calls. We set up the channels that work best for your business."
+    },
+    {
+      "question": "How much does an AI agent for a local business cost?",
+      "answer": "We offer three plans — Starter (website chat, FAQ, lead capture), Growth (multi-channel, CRM sync, booking integration), and Enterprise (white-label, custom workflows, multi-location). Contact us for exact pricing tailored to your business size."
+    },
+    {
+      "question": "Is there a contract or lock-in?",
+      "answer": "No long-term contracts. Our plans are month to month — you can cancel any time."
+    },
+    {
+      "question": "Can I see a demo before committing?",
+      "answer": "Absolutely. Visit elite.sysintinc.com to see a fully working AI agent demo for a salon. You can also request a live personalized demo for your own business — we'll have it ready within 24 hours."
+    },
+    {
+      "question": "What if the AI agent gets a question it cannot answer?",
+      "answer": "It politely tells the customer it doesn't have that information and directs them to call or email your business. It never guesses or makes up answers."
+    },
+    {
+      "question": "Can I update the agent's information after it goes live?",
+      "answer": "Yes. Minor updates like hours, pricing, or new services are included in your monthly plan. Just contact us and we'll update the agent — usually within 24 hours."
+    },
+    {
+      "question": "Who hosts the AI agent and website?",
+      "answer": "Everything runs on Microsoft Azure — secure, fast, and reliable cloud infrastructure with global availability."
+    },
+    {
       "question": "How do I contact SysInt?",
       "answer": "Call 440-364-6078, email gangadhar.ananthoju@sysintinc.com, or visit www.sysintinc.com."
     },
