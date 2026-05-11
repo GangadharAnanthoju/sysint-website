@@ -109,6 +109,7 @@
   font-weight: 600;
 }
 
+#chat-clear,
 #chat-close {
   width: 28px;
   height: 28px;
@@ -125,6 +126,7 @@
   transition: background 0.15s, color 0.15s;
 }
 
+#chat-clear:hover { background: rgba(255,80,80,0.18); color: #ff6b6b; }
 #chat-close:hover { background: rgba(255,255,255,0.14); color: #fff; }
 
 /* ── MESSAGES ── */

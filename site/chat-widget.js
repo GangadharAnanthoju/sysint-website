@@ -5,8 +5,53 @@ const CHAT_API_URL = IS_LOCAL
   ? 'http://localhost:8000/api/chat'
   : 'https://sysint-website-agent.kindmushroom-93329cd8.eastus.azurecontainerapps.io/api/chat';
 
-const BOT_NAME = 'SysInt Assistant';
-const BOT_INITIALS = 'SI';
+const BOT_NAME    = 'SysInt Assistant';
+const STORAGE_KEY = 'sysint_chat_state';
+const EXPIRY_MS   = 24 * 60 * 60 * 1000; // reset after 24 hours
+
+// in-memory conversation history for API calls
+let chatHistory = [];
+
+/* ── STORAGE ── */
+
+function saveState() {
+  try {
+    const messages = [];
+    document.querySelectorAll('#chat-messages .msg-row').forEach(row => {
+      const role = row.classList.contains('user') ? 'user' : 'bot';
+      const text = row.querySelector('.msg-bubble')?.textContent || '';
+      const time = row.querySelector('.msg-time')?.textContent  || '';
+      if (text) messages.push({ role, text, time });
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      messages,
+      history:  chatHistory,
+      savedAt:  Date.now()
+    }));
+  } catch(e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const state = JSON.parse(raw);
+    if (Date.now() - state.savedAt > EXPIRY_MS) {
+      localStorage.removeItem(STORAGE_KEY);
+      return null;
+    }
+    return state;
+  } catch(e) { return null; }
+}
+
+function clearState() {
+  localStorage.removeItem(STORAGE_KEY);
+  chatHistory = [];
+  document.getElementById('chat-messages').innerHTML = '';
+  addMessage("Chat cleared. 👋 Ask me about Enterprise Integration, AI services, or our AI Agent Store for local businesses.", 'bot');
+}
+
+/* ── FALLBACK (keyword matching) ── */
 
 const RESPONSES = [
   {
@@ -58,12 +103,12 @@ const RESPONSES = [
 function fallback(message) {
   const msg = message.toLowerCase();
   for (const r of RESPONSES) {
-    if (r.keywords.some(k => msg.includes(k))) {
-      return r.reply;
-    }
+    if (r.keywords.some(k => msg.includes(k))) return r.reply;
   }
   return "I can help with Enterprise Integration, AI services, or our AI Agent Store for local businesses. Feel free to ask anything — or reach us directly at 440-364-6078.";
 }
+
+/* ── API ── */
 
 async function getReply(message) {
   if (CHAT_API_URL) {
@@ -71,7 +116,7 @@ async function getReply(message) {
       const res = await fetch(CHAT_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
+        body: JSON.stringify({ message, history: chatHistory.slice(-6) })
       });
       const data = await res.json();
       return data.reply || data.message || fallback(message);
@@ -79,17 +124,17 @@ async function getReply(message) {
       return fallback(message);
     }
   }
-  // no API configured — use local keyword matching
   return new Promise(resolve => setTimeout(() => resolve(fallback(message)), 900 + Math.random() * 600));
 }
+
+/* ── UI HELPERS ── */
 
 function timestamp() {
   return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
-function addMessage(text, role) {
+function addMessage(text, role, time) {
   const messages = document.getElementById('chat-messages');
-
   const row = document.createElement('div');
   row.className = `msg-row ${role}`;
 
@@ -107,10 +152,10 @@ function addMessage(text, role) {
   bubble.textContent = text;
   col.appendChild(bubble);
 
-  const time = document.createElement('div');
-  time.className = 'msg-time';
-  time.textContent = timestamp();
-  col.appendChild(time);
+  const ts = document.createElement('div');
+  ts.className = 'msg-time';
+  ts.textContent = time || timestamp();
+  col.appendChild(ts);
 
   row.appendChild(col);
   messages.appendChild(row);
@@ -142,6 +187,8 @@ function hideTyping() {
   if (el) el.remove();
 }
 
+/* ── SEND ── */
+
 async function handleSend() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
@@ -149,15 +196,22 @@ async function handleSend() {
 
   input.value = '';
   addMessage(text, 'user');
+
+  // update history before API call
+  chatHistory.push({ role: 'user', content: text });
   showTyping();
 
   const reply = await getReply(text);
   hideTyping();
   addMessage(reply, 'bot');
+
+  chatHistory.push({ role: 'assistant', content: reply });
+  saveState();
 }
 
+/* ── INIT ── */
+
 function initChatWidget() {
-  // inject HTML
   const widget = document.createElement('div');
   widget.id = 'sysint-chat';
   widget.innerHTML = `
@@ -168,6 +222,9 @@ function initChatWidget() {
           <div class="chat-name">${BOT_NAME}</div>
           <div class="chat-status">● Online</div>
         </div>
+        <button id="chat-clear" aria-label="Clear chat" title="Clear chat">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+        </button>
         <button id="chat-close" aria-label="Close chat">✕</button>
       </div>
       <div id="chat-messages"></div>
@@ -185,10 +242,19 @@ function initChatWidget() {
   `;
   document.body.appendChild(widget);
 
-  // greet after short delay
-  setTimeout(() => addMessage("👋 Hi! Ask me about Enterprise Integration, AI services, or our AI Agent Store for local businesses.", 'bot'), 600);
+  // restore or greet
+  const state = loadState();
+  if (state && state.messages && state.messages.length > 0) {
+    chatHistory = state.history || [];
+    state.messages.forEach(m => addMessage(m.text, m.role, m.time));
+  } else {
+    setTimeout(() => {
+      addMessage("👋 Hi! Ask me about Enterprise Integration, AI services, or our AI Agent Store for local businesses.", 'bot');
+      saveState();
+    }, 600);
+  }
 
-  // toggle open/close
+  // FAB toggle
   document.getElementById('chat-fab').addEventListener('click', () => {
     const win = document.getElementById('chat-window');
     const isOpen = win.classList.contains('open');
@@ -203,7 +269,7 @@ function initChatWidget() {
     document.getElementById('fab-icon-close').style.display = 'none';
   });
 
-  // send on button click or Enter
+  document.getElementById('chat-clear').addEventListener('click', clearState);
   document.getElementById('chat-send').addEventListener('click', handleSend);
   document.getElementById('chat-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') handleSend();
@@ -217,7 +283,6 @@ function openChat() {
   document.getElementById('fab-icon-close').style.display = '';
 }
 
-// global so onclick="toggleChat()" buttons on any page work
 window.toggleChat = function() {
   const win = document.getElementById('chat-window');
   const isOpen = win.classList.contains('open');
