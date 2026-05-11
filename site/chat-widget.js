@@ -1,6 +1,9 @@
 /* ── SYSINT CHAT WIDGET ── */
 
-const CHAT_API_URL = ''; // set to your API endpoint when ready
+const IS_LOCAL = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
+const CHAT_API_URL = IS_LOCAL
+  ? 'http://localhost:8000/api/chat'
+  : 'https://sysint-website-agent.placeholder.eastus.azurecontainerapps.io/api/chat'; // update after first deploy
 
 const BOT_NAME = 'SysInt Assistant';
 const BOT_INITIALS = 'SI';
