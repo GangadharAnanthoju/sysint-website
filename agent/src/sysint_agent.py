@@ -13,17 +13,20 @@ client = AzureOpenAI(
 )
 
 DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4.1-mini")
-FAQ_PATH = Path(__file__).parent.parent / "data" / "faq.json"
+DATA_DIR   = Path(__file__).parent.parent / "data"
 
 
 def load_faq() -> str:
-    with open(FAQ_PATH, "r") as f:
-        faqs = json.load(f)
     lines = []
-    for item in faqs["faqs"]:
-        lines.append(f"Q: {item['question']}")
-        lines.append(f"A: {item['answer']}")
-        lines.append("")
+    for path in sorted(DATA_DIR.glob("*.json")):
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        # support both {"faqs": [...]} and plain [...]
+        items = data["faqs"] if isinstance(data, dict) else data
+        for item in items:
+            lines.append(f"Q: {item['question']}")
+            lines.append(f"A: {item['answer']}")
+            lines.append("")
     return "\n".join(lines)
 
 
