@@ -1,0 +1,44 @@
+{
+  "faqs": [
+    {
+      "question": "What services do you offer?",
+      "answer": "We offer haircuts, coloring, highlights, balayage, keratin treatments, blowouts, manicures, pedicures, facials, waxing, and massage therapy."
+    },
+    {
+      "question": "How do I book an appointment?",
+      "answer": "You can book online at luxesalon.com/book, call us at (555) 123-4567, or just ask me and I'll help you get scheduled."
+    },
+    {
+      "question": "What are your hours?",
+      "answer": "Monday–Wednesday 9am–7pm, Thursday–Friday 9am–8pm, Saturday 9am–6pm, and we're closed on Sundays."
+    },
+    {
+      "question": "How much does a haircut cost?",
+      "answer": "Haircuts start at $45 for women and $30 for men. Prices vary based on length and stylist. Color services start at $85."
+    },
+    {
+      "question": "Do you offer a cancellation policy?",
+      "answer": "We ask for 24 hours notice for cancellations. Late cancellations or no-shows may be charged 50% of the service fee."
+    },
+    {
+      "question": "Do you take walk-ins?",
+      "answer": "We do take walk-ins based on availability, but we recommend booking in advance especially on weekends."
+    },
+    {
+      "question": "Where are you located?",
+      "answer": "We're at 123 Main St, Cleveland, OH 44101. There's free parking in the rear lot."
+    },
+    {
+      "question": "Do you offer gift cards?",
+      "answer": "Yes! Gift cards are available in any amount — ask at the front desk or purchase online at luxesalon.com/gift."
+    },
+    {
+      "question": "What hair color brands do you use?",
+      "answer": "We use Redken, Wella, and Olaplex for all color services — professional-grade products for long-lasting results."
+    },
+    {
+      "question": "Do you offer bridal packages?",
+      "answer": "Yes, we offer full bridal party packages including hair and makeup. Contact us at hello@luxesalon.com to discuss your special day."
+    }
+  ]
+}
