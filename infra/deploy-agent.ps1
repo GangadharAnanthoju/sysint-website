@@ -70,8 +70,8 @@ if ($Redeploy) {
     --ingress external `
     --target-port 8000 `
     --secrets `
-      "foundry-openai-api-key=keyvaultref:https://$KeyVault.vault.azure.net/secrets/foundry-openai-api-key,identityref:system" `
-      "foundry-openai-api-endpoint=keyvaultref:https://$KeyVault.vault.azure.net/secrets/foundry-openai-api-endpoint,identityref:system" `
+      "foundry-openai-api-key=keyvaultref:https://kv-sysint-common-eus.vault.azure.net/secrets/foundry-openai-api-key,identityref:system" `
+      "foundry-openai-api-endpoint=keyvaultref:https://kv-sysint-common-eus.vault.azure.net/secrets/foundry-openai-api-endpoint,identityref:system" `
     --env-vars `
       "AZURE_OPENAI_API_KEY=secretref:foundry-openai-api-key" `
       "AZURE_OPENAI_ENDPOINT=secretref:foundry-openai-api-endpoint" `
