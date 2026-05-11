@@ -56,11 +56,16 @@ if ($Redeploy) {
 } else {
   Write-Host "`n[2/3] Creating Container App: $AppName ..." -ForegroundColor Yellow
 
+  # Get full resource ID of the shared ACA environment
+  $EnvId = az containerapp env show `
+    --name $AcaEnv `
+    --resource-group $AcaEnvRg `
+    --query id --output tsv
+
   az containerapp create `
     --name $AppName `
     --resource-group $ResourceGroup `
-    --environment $AcaEnv `
-    --environment-resource-group $AcaEnvRg `
+    --environment $EnvId `
     --image $Image `
     --registry-server "$AcrName.azurecr.io" `
     --min-replicas 0 `
@@ -69,6 +74,7 @@ if ($Redeploy) {
     --memory 0.5Gi `
     --ingress external `
     --target-port 8000 `
+    --system-assigned `
     --secrets `
       "foundry-openai-api-key=keyvaultref:https://kv-sysint-common-eus.vault.azure.net/secrets/foundry-openai-api-key,identityref:system" `
       "foundry-openai-api-endpoint=keyvaultref:https://kv-sysint-common-eus.vault.azure.net/secrets/foundry-openai-api-endpoint,identityref:system" `
