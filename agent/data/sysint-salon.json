@@ -32,6 +32,42 @@
     "answer": "Yes. The AI guides clients to book directly online, 24/7 — even when your salon is closed."
   },
   {
+    "question": "How does online appointment booking work?",
+    "answer": "Clients see your real available time slots and pick what works for them — no back-and-forth calls or texts. Once they book, the appointment automatically appears in your calendar and they receive an email confirmation straight away."
+  },
+  {
+    "question": "Will I get double bookings?",
+    "answer": "No. The booking system checks your connected calendar for busy times before showing available slots, so double bookings are impossible. Every slot shown to a client is genuinely open."
+  },
+  {
+    "question": "Do appointments sync to my calendar automatically?",
+    "answer": "Yes. The moment a client books, the appointment is added to your calendar automatically — no manual entry needed. You always have an up-to-date view of your day."
+  },
+  {
+    "question": "Do clients get a confirmation after booking?",
+    "answer": "Yes. Clients receive an email confirmation immediately after booking so both sides have the appointment details. No confusion, no missed appointments."
+  },
+  {
+    "question": "Can I share my booking link with clients?",
+    "answer": "Yes. You get a simple booking link that you can share anywhere — on your website, in a text message, on Instagram, or in an email. Clients can book from that link any time, day or night."
+  },
+  {
+    "question": "Do clients get a text reminder before their appointment?",
+    "answer": "Yes. When a client provides their phone number during booking, they receive an SMS reminder before their appointment. This keeps no-shows low without you having to follow up manually."
+  },
+  {
+    "question": "Do I get a text alert when someone books?",
+    "answer": "Yes. You can receive a text notification on your phone whenever a new appointment is booked, so you always know what is coming up — even if you are not at a computer."
+  },
+  {
+    "question": "What number do the text reminders come from?",
+    "answer": "SMS reminders are sent from a dedicated toll-free number, not your personal phone number. Clients see it as a professional reminder from your salon."
+  },
+  {
+    "question": "Can I send appointment reminders automatically?",
+    "answer": "Yes. Reminders go out automatically before each appointment — you set the timing and we handle the rest. No chasing clients, no manual texts."
+  },
+  {
     "question": "Can I choose my own colors and branding?",
     "answer": "Yes. We offer multiple themes and customize the colors, logo, and content to match your salon's brand."
   },
