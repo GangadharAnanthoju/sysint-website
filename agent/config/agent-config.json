@@ -1,23 +1,13 @@
 {
-  "agent_name": "Aria",
-  "business_name": "Luxe Salon & Spa",
-  "business_type": "salon",
+  "agent_name": "SysInt Assistant",
+  "company_name": "SysInt Inc",
   "model": "gpt-4o",
   "max_tokens": 512,
   "temperature": 0.4,
-  "fallback_message": "I'm not sure about that — please call us at (555) 123-4567 and we'll be happy to help.",
-  "hours": {
-    "monday": "9am – 7pm",
-    "tuesday": "9am – 7pm",
-    "wednesday": "9am – 7pm",
-    "thursday": "9am – 8pm",
-    "friday": "9am – 8pm",
-    "saturday": "9am – 6pm",
-    "sunday": "Closed"
-  },
+  "fallback_message": "I'm not sure about that — please reach us at 440-364-6078 or gangadhar.ananthoju@sysintinc.com and we'll follow up.",
   "contact": {
-    "phone": "(555) 123-4567",
-    "email": "hello@luxesalon.com",
-    "address": "123 Main St, Cleveland, OH 44101"
+    "phone": "440-364-6078",
+    "email": "gangadhar.ananthoju@sysintinc.com",
+    "website": "www.sysintinc.com"
   }
 }

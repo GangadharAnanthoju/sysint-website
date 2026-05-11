@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from src.salon_agent import SalonAgent
+from src.sysint_agent import SysIntAgent
 
 app = FastAPI(title="SysInt Salon Agent API", version="0.1.0")
 
@@ -12,7 +12,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-agent = SalonAgent()
+agent = SysIntAgent()
 
 
 class ChatRequest(BaseModel):

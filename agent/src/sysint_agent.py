@@ -9,7 +9,7 @@ load_dotenv()
 BASE = Path(__file__).parent.parent
 
 
-class SalonAgent:
+class SysIntAgent:
     def __init__(self):
         self.client = AsyncAzureOpenAI(
             api_key=os.environ["AZURE_OPENAI_KEY"],

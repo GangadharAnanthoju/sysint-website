@@ -1,5 +1,5 @@
 import asyncio
-from src.salon_agent import SalonAgent
+from src.sysint_agent import SysIntAgent
 
 TEST_MESSAGES = [
     "Hi, what are your hours?",
@@ -11,8 +11,8 @@ TEST_MESSAGES = [
 
 
 async def main():
-    agent = SalonAgent()
-    print("SysInt Salon Agent — Local Test\n" + "=" * 40)
+    agent = SysIntAgent()
+    print("SysInt Agent — Local Test\n" + "=" * 40)
     for msg in TEST_MESSAGES:
         print(f"\nUser: {msg}")
         reply = await agent.respond(msg)

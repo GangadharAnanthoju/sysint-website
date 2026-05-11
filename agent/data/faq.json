@@ -1,44 +1,44 @@
 {
   "faqs": [
     {
-      "question": "What services do you offer?",
-      "answer": "We offer haircuts, coloring, highlights, balayage, keratin treatments, blowouts, manicures, pedicures, facials, waxing, and massage therapy."
+      "question": "What services does SysInt offer?",
+      "answer": "SysInt offers Enterprise Integration (Azure Integration Services, BizTalk migration, API modernization) and AI Engineering (AI Integration, Agentic Automation, Inference Platforms, Intelligent Apps). We also have an AI Agent Store for local businesses."
     },
     {
-      "question": "How do I book an appointment?",
-      "answer": "You can book online at luxesalon.com/book, call us at (555) 123-4567, or just ask me and I'll help you get scheduled."
+      "question": "What is the AI Agent Store?",
+      "answer": "The AI Agent Store provides ready-to-deploy AI chatbots for local businesses — restaurants, salons, clinics, real estate, retail, home services, legal, and education. Agents go live in 48 hours."
     },
     {
-      "question": "What are your hours?",
-      "answer": "Monday–Wednesday 9am–7pm, Thursday–Friday 9am–8pm, Saturday 9am–6pm, and we're closed on Sundays."
+      "question": "Do you help with BizTalk migration?",
+      "answer": "Yes — BizTalk to Azure migration is one of our deepest capabilities. We bring 20+ years of BizTalk expertise and handle assessment, pattern preservation, and cloud-ready deployment."
     },
     {
-      "question": "How much does a haircut cost?",
-      "answer": "Haircuts start at $45 for women and $30 for men. Prices vary based on length and stylist. Color services start at $85."
+      "question": "What Azure integration services do you work with?",
+      "answer": "We work with Logic Apps, Service Bus, API Management, Event Grid, and Data Factory — the full Azure Integration Services stack."
     },
     {
-      "question": "Do you offer a cancellation policy?",
-      "answer": "We ask for 24 hours notice for cancellations. Late cancellations or no-shows may be charged 50% of the service fee."
+      "question": "How do I get an AI agent for my local business?",
+      "answer": "Contact us at 440-364-6078 or gangadhar.ananthoju@sysintinc.com. We'll match the right agent to your industry and get you live within 48 hours."
     },
     {
-      "question": "Do you take walk-ins?",
-      "answer": "We do take walk-ins based on availability, but we recommend booking in advance especially on weekends."
+      "question": "How long does it take to go live?",
+      "answer": "Local business AI agents typically go live in 48 hours — just a 20-minute setup call. Enterprise integration projects start delivering value within 2–4 weeks of kickoff."
     },
     {
-      "question": "Where are you located?",
-      "answer": "We're at 123 Main St, Cleveland, OH 44101. There's free parking in the rear lot."
+      "question": "What industries do you serve with AI agents?",
+      "answer": "Restaurants, salons & spas, medical clinics, real estate, retail, home services, legal & professional services, and education."
     },
     {
-      "question": "Do you offer gift cards?",
-      "answer": "Yes! Gift cards are available in any amount — ask at the front desk or purchase online at luxesalon.com/gift."
+      "question": "How do I contact SysInt?",
+      "answer": "Call 440-364-6078, email gangadhar.ananthoju@sysintinc.com, or visit www.sysintinc.com."
     },
     {
-      "question": "What hair color brands do you use?",
-      "answer": "We use Redken, Wella, and Olaplex for all color services — professional-grade products for long-lasting results."
+      "question": "Who founded SysInt?",
+      "answer": "SysInt Inc was founded by Ganga Ananthoju, Founder & AI Engineer, with 20+ years of enterprise integration experience."
     },
     {
-      "question": "Do you offer bridal packages?",
-      "answer": "Yes, we offer full bridal party packages including hair and makeup. Contact us at hello@luxesalon.com to discuss your special day."
+      "question": "What AI platforms and models do you work with?",
+      "answer": "We work with Azure OpenAI, Anthropic Claude, and open-source inference platforms. We handle model deployment, guardrails, observability, and routing for production-ready AI delivery."
     }
   ]
 }
