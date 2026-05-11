@@ -18,7 +18,7 @@ param(
   [string]$AppName        = "sysint-website-eus2",
   [string]$Location       = "eastus2",
   [string]$DeployToken    = "",
-  [string]$SourcePath     = "$PSScriptRoot\.."
+  [string]$SourcePath     = "$PSScriptRoot\..\site"
 )
 
 $ErrorActionPreference = "Stop"
