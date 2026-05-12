@@ -10,21 +10,36 @@ Static website for SysInt Inc, an enterprise integration and AI engineering firm
 
 ```text
 SysInt_website/
-├── site/                        ← static frontend (all HTML, CSS, JS, logos)
-├── agent/                       ← AI agent backend (FastAPI + Azure OpenAI)
+├── site/                          ← static frontend
+│   ├── assets/
+│   │   ├── css/
+│   │   │   ├── main.css           ← shared layout: nav, hamburger, footer, buttons
+│   │   │   └── components.css     ← chat widget styles
+│   │   ├── js/
+│   │   │   ├── main.js            ← mobile nav toggle, scroll effect, active links
+│   │   │   └── chat-widget.js     ← AI chat widget (popup, sessionStorage)
+│   │   └── images/logos/          ← logo assets
+│   ├── index.html
+│   ├── ai-agent-store.html
+│   ├── enterprise-integration.html
+│   ├── ai-services.html
+│   ├── card.html
+│   ├── lead-magnet.html
+│   ├── legal.html
+│   └── error.html
+├── agent/                         ← AI agent backend (FastAPI + Azure OpenAI)
 │   ├── src/
-│   │   ├── sysint_agent.py      ← core agent logic, system prompt, FAQ
-│   │   ├── api.py               ← FastAPI POST /api/chat
-│   │   └── test_agent.py        ← local test runner
-│   ├── data/faq.json            ← SysInt Q&A knowledge base
-│   ├── prompts/system-prompt.md ← agent persona and rules
-│   ├── config/agent-config.json ← model, contact info
+│   │   ├── sysint_agent.py        ← core agent logic, system prompt, FAQ loader
+│   │   ├── api.py                 ← FastAPI POST /api/chat
+│   │   └── test_agent.py          ← local test runner
+│   ├── data/
+│   │   ├── faq.json               ← SysInt general Q&A knowledge base
+│   │   └── sysint-salon.json      ← AI Agent Store / local business Q&As
 │   ├── Dockerfile
-│   ├── docker-compose.yml
 │   └── pyproject.toml
 ├── infra/
-│   ├── deploy-swa.ps1           ← deploy static site to Azure SWA
-│   └── deploy-agent.ps1         ← deploy agent to Azure Container Apps
+│   ├── deploy-swa.ps1             ← deploy static site to Azure SWA
+│   └── deploy-agent.ps1           ← deploy agent to Azure Container Apps
 ├── .github/workflows/
 │   └── azure-static-web-apps.yml
 └── README.md
@@ -49,19 +64,28 @@ SysInt_website/
 
 ## Chat Widget
 
-Live AI chat widget powered by Azure OpenAI via the agent backend.
+Live AI chat widget powered by Azure OpenAI via the agent backend. Renders as a popup (not fullscreen) on all screen sizes. Chat history is stored in `sessionStorage` — clears when the browser tab closes.
 
-**Production URL:** `https://sysint-website-agent.kindmushroom-93329cd8.eastus.azurecontainerapps.io/api/chat`
+**Agent API:** `https://sysint-website-agent.kindmushroom-93329cd8.eastus.azurecontainerapps.io/api/chat`
 
 The widget auto-switches between local and production:
 
 ```js
-// site/chat-widget.js
 const IS_LOCAL = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
 const CHAT_API_URL = IS_LOCAL
   ? 'http://localhost:8000/api/chat'
   : 'https://sysint-website-agent.kindmushroom-93329cd8.eastus.azurecontainerapps.io/api/chat';
 ```
+
+### Mobile fixes applied
+
+| Bug | Cause | Fix |
+| --- | --- | --- |
+| All links/buttons blocked on phone | `#sysint-chat` container (`position:fixed; z-index:9999`) covered full screen — invisible 500px chat window in DOM blocked all touches on iOS | `pointer-events:none` on container; `pointer-events:auto` on FAB and open window |
+| Hamburger not responding | `margin:-10px` clipped touch area; `DOMContentLoaded` overhead | Removed negative margin, `padding:14px`, `touch-action:manipulation`, run JS directly |
+| Menu links not responding | Links were inline text — tiny tap target | `display:block; padding:10px 24px; touch-action:manipulation` |
+| Input zooms page on focus | iOS auto-zooms any input with `font-size < 16px` | `font-size:16px` on `#chat-input` at `max-width:768px` |
+| "Hi" wraps to two lines | `word-break:break-word` + no `flex:1` on wrapper | `overflow-wrap:break-word` + `.msg-col { flex:1; min-width:0 }` |
 
 ---
 

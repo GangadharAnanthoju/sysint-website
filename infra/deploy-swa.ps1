@@ -58,10 +58,11 @@ Remove-Item -Recurse -Force $stage -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $stage | Out-Null
 
 Copy-Item "$SourcePath\*.html" $stage
-Copy-Item "$SourcePath\*.css"  $stage
-Copy-Item "$SourcePath\*.js"   $stage
+Copy-Item "$SourcePath\*.css"  $stage -ErrorAction SilentlyContinue
+Copy-Item "$SourcePath\*.js"   $stage -ErrorAction SilentlyContinue
 Copy-Item "$SourcePath\*.json" $stage
-Copy-Item "$SourcePath\logos"  $stage -Recurse
+Copy-Item "$SourcePath\logos"  $stage -Recurse -ErrorAction SilentlyContinue
+Copy-Item "$SourcePath\assets" $stage -Recurse
 
 swa deploy $stage --deployment-token $DeployToken --env production
 

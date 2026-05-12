@@ -141,7 +141,7 @@ function addMessage(text, role, time) {
   if (role === 'bot') {
     const av = document.createElement('div');
     av.className = 'msg-avatar';
-    av.innerHTML = '<img src="logos/logo.png" alt="SysInt" />';
+    av.innerHTML = '<img src="assets/images/logos/logo.png" alt="SysInt" />';
     row.appendChild(av);
   }
 
@@ -171,7 +171,7 @@ function showTyping() {
 
   const av = document.createElement('div');
   av.className = 'msg-avatar';
-  av.innerHTML = '<img src="logos/logo.png" alt="SysInt" />';
+  av.innerHTML = '<img src="assets/images/logos/logo.png" alt="SysInt" />';
   row.appendChild(av);
 
   const bubble = document.createElement('div');
@@ -218,7 +218,7 @@ function initChatWidget() {
   widget.innerHTML = `
     <div id="chat-window">
       <div id="chat-header">
-        <div class="chat-avatar"><img src="logos/logo.png" alt="SysInt" /></div>
+        <div class="chat-avatar"><img src="assets/images/logos/logo.png" alt="SysInt" /></div>
         <div class="chat-info">
           <div class="chat-name">${BOT_NAME}</div>
           <div class="chat-status">● Online</div>

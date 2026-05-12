@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SysInt Inc | AI Platform Services</title>
   <meta name="description" content="SysInt Inc AI Platform — AI integration, agentic automation, inference platforms, and intelligent applications for the enterprise." />
-  <link rel="icon" type="image/png" href="logos/logo.png" />
+  <link rel="icon" type="image/png" href="assets/images/logos/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
   <style>
     :root {
       --bg: #060814;
@@ -432,17 +434,29 @@
   <header>
     <div class="container nav">
       <a href="index.html" class="brand">
-        <img src="logos/sidelogo-text.png" alt="SysInt Inc" class="logo-side" />
+        <img src="assets/images/logos/sidelogo-text.png" alt="SysInt Inc" class="logo-side" />
       </a>
       <nav class="nav-links">
-        <a href="#services">AI Services</a>
-        <a href="#platform">Platform</a>
-        <a href="#approach">Approach</a>
+        <a href="index.html">Home</a>
+        <a href="ai-agent-store.html">Agent Store</a>
+        <a href="enterprise-integration.html">Integration</a>
+        <a href="ai-services.html" class="active">AI Services</a>
         <a href="#contact">Contact</a>
       </nav>
       <a href="#contact" class="nav-cta">Start a Conversation</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </header>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <button class="nav-mobile-close" id="nav-mobile-close">✕</button>
+        <a href="index.html">Home</a>
+    <a href="ai-agent-store.html">Agent Store</a>
+    <a href="enterprise-integration.html">Integration</a>
+    <a href="ai-services.html" class="active">AI Services</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="mobile-cta">Start a Conversation</a>
+  </div>
 
   <main>
 
@@ -662,7 +676,7 @@
   <footer>
     <div class="container footer-inner">
       <a href="index.html" class="footer-brand">
-        <img src="logos/textonly.png" alt="SysInt Inc" class="logo-text" />
+        <img src="assets/images/logos/textonly.png" alt="SysInt Inc" class="logo-text" />
       </a>
       <nav class="footer-nav">
         <a href="index.html">Home</a>
@@ -674,11 +688,8 @@
       <p class="footer-copy">© 2025 SysInt Inc. Integration • Intelligence • Inference</p>
     </div>
   </footer>
-
-  <link rel="stylesheet" href="mobile-menu.css" />
-  <link rel="stylesheet" href="chat-widget.css" />
-  <script src="mobile-menu.js"></script>
-  <script src="chat-widget.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/chat-widget.js"></script>
 
 </body>
 </html>
