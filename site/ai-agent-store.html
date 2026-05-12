@@ -197,10 +197,7 @@
     .btn-outline:hover { border-color: rgba(255,255,255,0.45) !important; background: rgba(255,255,255,0.06); }
 
     /* ── HERO ── */
-    .hero {
-      padding: 72px 0 56px;
-      text-align: center;
-    }
+    .hero { padding: 72px 0 48px; }
 
     .hero-badge {
       display: inline-flex;
@@ -215,7 +212,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .hero-badge .pulse {
@@ -231,38 +228,33 @@
       50% { opacity: 0.5; transform: scale(0.8); }
     }
 
-    .hero h1 {
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 22px;
-      max-width: 820px;
-      margin-left: auto;
-      margin-right: auto;
+    h1 {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
     }
 
     .hero-lead {
-      font-size: 1.05rem;
+      font-size: 0.97rem;
       color: var(--muted);
       line-height: 1.72;
-      max-width: 620px;
-      margin: 0 auto 36px;
+      margin-bottom: 16px;
     }
 
     .hero-actions {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 52px;
+      gap: 12px;
+      margin-top: 30px;
     }
 
     .hero-stats {
       display: flex;
-      justify-content: center;
       gap: 48px;
       flex-wrap: wrap;
-      padding-top: 40px;
+      padding-top: 36px;
+      margin-top: 36px;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -678,8 +670,8 @@
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="ai-agent-store.html" class="active">Agent Store</a>
-        <a href="enterprise-integration.html">Integration</a>
         <a href="ai-services.html">AI Services</a>
+        <a href="enterprise-integration.html">Integration</a>
         <a href="#contact">Contact</a>
       </nav>
       <a href="#contact" class="nav-cta">Get Your Agent</a>
@@ -691,8 +683,8 @@
     <button class="nav-mobile-close" id="nav-mobile-close">✕</button>
         <a href="index.html">Home</a>
     <a href="ai-agent-store.html" class="active">Agent Store</a>
-    <a href="enterprise-integration.html">Integration</a>
     <a href="ai-services.html">AI Services</a>
+    <a href="enterprise-integration.html">Integration</a>
     <a href="#contact">Contact</a>
     <a href="#contact" class="mobile-cta">Get Your Agent</a>
   </div>
@@ -703,15 +695,19 @@
     <section class="hero" id="top">
       <div class="container">
         <div class="hero-badge"><span class="pulse"></span>Now Open — AI Agent Store</div>
-        <h1>AI Agents that work for your<br><span class="gradient-text">local business 24/7.</span></h1>
+        <h1>AI Agents that work for your <span class="gradient-text">local business 24/7.</span></h1>
         <p class="hero-lead">
           Ready-to-deploy AI assistants purpose-built for local business. Handle bookings,
           answer questions, capture leads, and serve customers around the clock —
           without adding staff or technical complexity.
         </p>
+        <p class="hero-lead">
+          Choose from 8 pre-built agent templates for restaurants, salons, clinics, real estate,
+          and more — customized to your business and live in days.
+        </p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Get Your AI Agent</a>
-          <button class="btn btn-outline" onclick="toggleChat()">Try Live Demo →</button>
+          <button class="btn btn-outline" onclick="toggleChat()">Try Live Demo</button>
         </div>
         <div class="hero-stats">
           <div>
@@ -792,7 +788,7 @@
               <li>Wait time updates and waitlist management</li>
               <li>Daily specials and promotion announcements</li>
             </ul>
-            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo</button>
           </div>
 
           <!-- 2. Salons & Spas -->
@@ -813,7 +809,7 @@
               <li>Product recommendations and upsell prompts</li>
               <li>Loyalty points and offer inquiries</li>
             </ul>
-            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo</button>
           </div>
 
           <!-- 3. Medical Clinics -->
@@ -834,7 +830,7 @@
               <li>Prescription refill request routing</li>
               <li>Directions, parking, and new patient registration</li>
             </ul>
-            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo</button>
           </div>
 
           <!-- 4. Real Estate -->
@@ -855,7 +851,7 @@
               <li>Mortgage and financing FAQ routing</li>
               <li>Agent introduction and contact capture</li>
             </ul>
-            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo</button>
           </div>
 
           <!-- 5. Retail -->
@@ -876,7 +872,7 @@
               <li>Promotions, discounts, and loyalty program info</li>
               <li>After-hours lead capture and callback requests</li>
             </ul>
-            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo</button>
           </div>
 
           <!-- 6. Home Services -->
@@ -897,7 +893,7 @@
               <li>Job scheduling and availability lookup</li>
               <li>Service warranty and maintenance FAQs</li>
             </ul>
-            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo</button>
           </div>
 
           <!-- 7. Legal & Professional -->
@@ -918,7 +914,7 @@
               <li>Attorney or advisor assignment routing</li>
               <li>Referral capture and conflict-of-interest pre-check</li>
             </ul>
-            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo</button>
           </div>
 
           <!-- 8. Education & Tutoring -->
@@ -939,9 +935,47 @@
               <li>Progress check-in requests and parent communication</li>
               <li>Academic calendar, holidays, and event info</li>
             </ul>
-            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo →</button>
+            <button class="svc-demo-btn" onclick="toggleChat()">Try a Demo</button>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FULL SERVICE -->
+    <section id="web-design">
+      <div class="container">
+        <span class="section-label">Complete Package</span>
+        <h2 class="section-title">We don't just add an agent — we <span class="gradient-text">build your whole online presence.</span></h2>
+        <p class="section-sub">No website yet? Need a refresh? SysInt designs, develops, and hosts professional websites for local businesses — then wires your AI agent directly into it. One team, one bill, everything works together.</p>
+
+        <div class="trust-grid">
+          <div class="trust-card">
+            <div class="trust-icon">🎨</div>
+            <h4>Website Design</h4>
+            <p>Clean, mobile-first websites that look professional and load fast. Built to reflect your brand and convert visitors into customers.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">⚙️</div>
+            <h4>Development & Setup</h4>
+            <p>We build it, connect your domain, set up your contact forms, Google Business profile, and embed your AI agent — ready to go live.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">☁️</div>
+            <h4>Hosting & Maintenance</h4>
+            <p>Fast, reliable hosting included in your monthly plan. We handle updates, security, and uptime — you never touch a server.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">🤝</div>
+            <h4>One Team for Everything</h4>
+            <p>Website, AI agent, and integrations all managed by SysInt. One point of contact, no finger-pointing between vendors.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 36px;">
+          <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
         </div>
       </div>
     </section>
@@ -971,7 +1005,7 @@
               <li class="dimmed">CRM or WhatsApp connection</li>
               <li class="dimmed">Custom workflows</li>
             </ul>
-            <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;border-radius:12px">Get Started →</a>
+            <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;border-radius:12px">Get Started</a>
           </div>
 
           <div class="plan-card featured">
@@ -988,7 +1022,7 @@
               <li class="dimmed">Multiple agents</li>
               <li class="dimmed">White-label branding</li>
             </ul>
-            <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center">Get Started →</a>
+            <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center">Get Started</a>
           </div>
 
           <div class="plan-card">
@@ -1005,7 +1039,7 @@
               <li>Agent resale program available</li>
               <li>Priority onboarding</li>
             </ul>
-            <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;border-radius:12px">Talk to Us →</a>
+            <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;border-radius:12px">Talk to Us</a>
           </div>
 
         </div>
@@ -1059,7 +1093,7 @@
           </p>
           <div class="contact-actions">
             <button class="btn btn-primary" onclick="toggleChat()">Chat With Us Now</button>
-            <a href="index.html#contact" class="btn btn-outline">Contact SysInt →</a>
+            <a href="index.html#contact" class="btn btn-outline">Contact SysInt</a>
           </div>
         </div>
       </div>

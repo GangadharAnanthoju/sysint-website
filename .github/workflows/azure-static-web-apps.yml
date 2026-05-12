@@ -1,14 +1,15 @@
 name: Deploy SysInt Website to Azure Static Web Apps
 
-on:
-  push:
-    branches:
-      - dev
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - dev
+#       - main
+#   pull_request:
+#     types: [opened, synchronize, reopened, closed]
+#     branches:
+#       - main
+on: workflow_dispatch
 
 jobs:
   deploy:
