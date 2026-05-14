@@ -23,9 +23,11 @@ function saveState() {
       const time = row.querySelector('.msg-time')?.textContent  || '';
       if (text) messages.push({ role, text, time });
     });
+    const isOpen = document.getElementById('chat-window')?.classList.contains('open') || false;
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
       messages,
       history:  chatHistory,
+      isOpen,
       savedAt:  Date.now()
     }));
   } catch(e) {}
@@ -146,7 +148,14 @@ function addMessage(text, role, time) {
   }
 
   const col = document.createElement('div');
-  col.className = 'msg-col';
+  col.className = role === 'user' ? 'msg-col msg-col--user' : 'msg-col';
+
+  if (role === 'user') {
+    const av = document.createElement('div');
+    av.className = 'msg-avatar msg-avatar--user';
+    av.textContent = 'You';
+    row.appendChild(av);
+  }
 
   const bubble = document.createElement('div');
   bubble.className = 'msg-bubble';
@@ -163,7 +172,7 @@ function addMessage(text, role, time) {
   messages.scrollTop = messages.scrollHeight;
 }
 
-function showTyping() {
+function showTyping(label) {
   const messages = document.getElementById('chat-messages');
   const row = document.createElement('div');
   row.className = 'msg-row bot';
@@ -174,11 +183,22 @@ function showTyping() {
   av.innerHTML = '<img src="assets/images/logos/logo.png" alt="SysInt" />';
   row.appendChild(av);
 
+  const col = document.createElement('div');
+  col.className = 'msg-col';
+
   const bubble = document.createElement('div');
   bubble.className = 'typing-bubble';
   bubble.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-  row.appendChild(bubble);
+  col.appendChild(bubble);
 
+  if (label) {
+    const lbl = document.createElement('div');
+    lbl.className = 'typing-label';
+    lbl.textContent = label;
+    col.appendChild(lbl);
+  }
+
+  row.appendChild(col);
   messages.appendChild(row);
   messages.scrollTop = messages.scrollHeight;
 }
@@ -200,7 +220,7 @@ async function handleSend() {
 
   // update history before API call
   chatHistory.push({ role: 'user', content: text });
-  showTyping();
+  showTyping(chatHistory.length <= 1 ? 'Initializing...' : '');
 
   const reply = await getReply(text);
   hideTyping();
@@ -235,6 +255,7 @@ function initChatWidget() {
           <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
         </button>
       </div>
+      <div class="chat-footer">Powered by SysInt AI</div>
     </div>
     <button id="chat-fab" aria-label="Open chat">
       <svg id="fab-icon-chat" viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z"/></svg>
@@ -248,6 +269,11 @@ function initChatWidget() {
   if (state && state.messages && state.messages.length > 0) {
     chatHistory = state.history || [];
     state.messages.forEach(m => addMessage(m.text, m.role, m.time));
+    if (state.isOpen) {
+      document.getElementById('chat-window').classList.add('open');
+      document.getElementById('fab-icon-chat').style.display = 'none';
+      document.getElementById('fab-icon-close').style.display = '';
+    }
   } else {
     setTimeout(() => {
       addMessage("👋 Hi! Ask me about Enterprise Integration, AI services, or our AI Agent Store for local businesses.", 'bot');
@@ -262,12 +288,14 @@ function initChatWidget() {
     win.classList.toggle('open');
     document.getElementById('fab-icon-chat').style.display = isOpen ? '' : 'none';
     document.getElementById('fab-icon-close').style.display = isOpen ? 'none' : '';
+    saveState();
   });
 
   document.getElementById('chat-close').addEventListener('click', () => {
     document.getElementById('chat-window').classList.remove('open');
     document.getElementById('fab-icon-chat').style.display = '';
     document.getElementById('fab-icon-close').style.display = 'none';
+    saveState();
   });
 
   document.getElementById('chat-clear').addEventListener('click', clearState);
